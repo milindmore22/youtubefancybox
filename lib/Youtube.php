@@ -75,7 +75,9 @@ namespace YTubeFancy{
                 if( isset( $attr['videoid'] ) )
                 {
                 ?>
-                    <a class='youtube' href="<?php echo $protocol; ?>www.youtube.com/embed/<?php echo $attr['videoid']; ?>?rel=0&autoplay=<?php echo $autoplay?>&wmode=transparent"><img src="<?php echo $protocol;?>img.youtube.com/vi/<?php echo $attr['videoid'];?>/0.jpg" width="<?php echo $attr['width']; ?>" height="<?php echo $attr['height']; ?>"/></a>
+                    <a class="youtube" href="<?php echo $protocol; ?>www.youtube.com/embed/<?php echo $attr['videoid']; ?>?rel=0&autoplay=<?php echo $autoplay?>&wmode=transparent">
+                        <img src="<?php echo $protocol;?>img.youtube.com/vi/<?php echo $attr['videoid'];?>/0.jpg" width="<?php echo $attr['width']; ?>" height="<?php echo $attr['height']; ?>"/>
+                    </a>
                 <?php
                 }else{
                         echo "\n<br /><span style='clear:both;color:red'>". __( "Please Enter Youtube ID or Youtube URL as [youtube videoid='XXXXX']","ytubebox")."</span>";
@@ -91,7 +93,7 @@ namespace YTubeFancy{
                    
                         <h2><?php _e( 'Generate Youtube Shortcode','ytubebox' ); ?></h2>
                         <hr />
-                        <table>
+                        <table class="form-table">
                                 <tr>
                                         <th align="left">
                                                 <?php _e( 'Enter Youtube URL', 'ytubebox' ); ?>

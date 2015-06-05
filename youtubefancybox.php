@@ -54,7 +54,14 @@ namespace YTubeFancy{
         */
        function youtubefancybox_adminjs_file(){
                wp_enqueue_script('jquery');
-               wp_enqueue_script('fancybox_admin', plugins_url('js/fancybox_admin.js',__FILE__) );
+               wp_register_script( 'fancybox_admin', plugins_url('js/fancybox_admin.js',__FILE__) );
+               $translation_array=array(
+                   'youtube_alert'=>"Youtube url you entered might be wrong, Please enter correct URL !",
+                   'viemo_alert'=> "Viemo url you entered might be wrong, Please enter correct URL !"
+               );
+               wp_localize_script( 'fancybox_admin', 'fancybox_admin_obj', $translation_array );
+               wp_enqueue_script('fancybox_admin' );
+               
        }
        
        /**
@@ -98,11 +105,12 @@ namespace YTubeFancy{
     }
 </style>
                 <div class="wrap">
-                     <fieldset>
-                         <legend><?php _e( 'Set Default options', 'ytubebox'); ?></legend>
-                        
+                    <h1> <?php _e('Youtube FancyBox','ytubebox');?> </h1>
+                    
+                    <h2>Set Default Options</h2>
+                    <hr />
                         <form action="<?php echo $_SERVER['PHP_SELF']?>?page=ytubefancybox" method="post">
-                                        <table>
+                                        <table class="form-table">
                                                 <tr>
                                                         <th align="left"><?php _e( 'Height' , 'ytubebox' ) ?></th>
                                                         <td align="left">
@@ -129,7 +137,7 @@ namespace YTubeFancy{
                                                 </tr>
                                         </table>
                         </form>
-                        </fieldset>
+                        
                 </div>
 
            <?php
