@@ -16,7 +16,7 @@ YouTube video. you can use it with shortcode in page, post and text widget.
 `[youtube videoid="<youtube videoid goes here>" height="<height goes here>" width="<width goes here>" ]`
 `[youtube url="<youtube url goes here>"]`
 ```
-in the backend you can genrated shorcodes also you can set default height, width and a option to play video automatically or not
+in the backend you can genrate shorcodes also you can set default height, width and a option to play video automatically.
 
 #Installation
 
