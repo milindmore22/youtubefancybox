@@ -1,86 +1,192 @@
 <?php
 
 /**
- * @package YoutubeFancyBox
- * @version 1.3
+ * Plugin Name: YouTube FancyBox
+ * Plugin URI: http://milindmore22.blogspot.com/
+ * Description: Display thumbnail of Youtube and Vimeo videos and on clicking on thumbnail it will open in popupbox and play video.
+ * Author: Milind More
+ * Author URI: http://milindmore22.blogspot.com/
+ * Version: 2.0
+ * Text Domain: ytubebox
+ * Domain Path: /languages/
+ *
+ * @author milind.
+ * @package ytubefancybox
  */
-/*
-  Plugin Name: YouTube FancyBox
-  Plugin URI: http://milindmore22.blogspot.com/
-  Description: This plugin runs with shortcodes [youtube videoid="as-H0sZbbd0" height="100" width="100"] OR [youtube url="https://www.youtube.com/watch?v=DYojBZG5d1Q" height="100" width="100"] for colorbox /lightbox (thanks to  Jack Moore(http://www.jacklmoore.com/colorbox/) )
-  Author: Milind More
-  Author URI: http://milindmore22.blogspot.com/
-  Version: 1.3
- */
-/**
- * If You are admin you will get admin settings
- */
-if ( is_admin() )
-	require_once dirname( __FILE__ ) . '/admin.php';
-/**
- * Adding Shortcode action filter
- */
-add_shortcode( 'youtube', 'youtubefancybox_url' );
-add_action( 'wp_head', 'youtubefancybox_js_file' );
-add_filter( 'widget_text', 'shortcode_unautop' );
-add_filter( 'widget_text', 'do_shortcode' );
 
-/**
- * Enqueue scritps js nessary
- */
-function youtubefancybox_js_file() {
-	wp_enqueue_style( 'colorboxcss', plugins_url( 'css/colorbox.css', __FILE__ ) );
-	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'colorboxjs', plugins_url( 'js/jquery.colorbox-min.js', __FILE__ ) );
-	wp_enqueue_script( 'colorboxcaller', plugins_url( 'js/caller.js', __FILE__ ) );
+namespace YTubeFancy {
+
+	/**
+	 * Youtube Fancybox main class.
+	 */
+	class Youtubefanybox {
+
+		/**
+		 * Class Constructor.
+		 */
+		public function __construct() {
+			/**
+			 * If You are admin you will get admin settings
+			 */
+			if ( is_admin() ) {
+				/**
+				 * Adding action calling plugin menu and loading header file
+				 */
+				add_action( 'admin_menu', array( $this, 'youtubefancybox_plugin_main_menu' ) );
+				add_action( 'admin_head', array( $this, 'youtubefancybox_adminjs_file' ) );
+			}
+			/**
+			 * Adding Shortcode action filter
+			 */
+			add_action( 'wp_head', array( $this, 'youtubefancybox_js_file' ) );
+			add_filter( 'widget_text', array( $this, 'shortcode_unautop' ) );
+			add_filter( 'widget_text', array( $this, 'do_shortcode' ) );
+			add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ) );
+		}
+
+		/**
+		 * Adds Menu page for Youtueb Fancybox.
+		 */
+		public function youtubefancybox_plugin_main_menu() {
+			add_menu_page( 'YouTube FancyBox', 'YouTube FancyBox', 'manage_options', 'ytubefancybox', array( $this, 'ytubefancybox_default_settings' ), '', 6 );
+		}
+
+		/**
+		 * Function will make plugin translation ready.
+		 *
+		 * @todo created pdo or mo file for translation
+		 */
+		public function load_plugin_textdomain() {
+			load_plugin_textdomain( 'ytubebox', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+		}
+
+		/**
+		 * Loading js and css files
+		 */
+		public function youtubefancybox_adminjs_file() {
+
+			wp_enqueue_script( 'jquery' );
+			wp_register_script( 'fancybox_admin', plugins_url( 'js/fancybox_admin.js', __FILE__ ) );
+
+			$translation_array = array(
+				'youtube_alert' => esc_html__( 'Youtube url you entered might be wrong, Please enter correct URL !', 'ytubebox' ),
+				'viemo_alert'   => esc_html__( 'Viemo url you entered might be wrong, Please enter correct URL !', 'ytubebox' ),
+			);
+
+			wp_localize_script( 'fancybox_admin', 'fancybox_admin_obj', $translation_array );
+			wp_enqueue_script( 'fancybox_admin' );
+
+		}
+
+		/**
+		 * Enqueue scritps js nessary.
+		 */
+		public function youtubefancybox_js_file() {
+			wp_enqueue_style( 'colorboxcss', plugins_url( 'css/colorbox.css', __FILE__ ) );
+			wp_enqueue_script( 'jquery' );
+			wp_enqueue_script( 'colorboxjs', plugins_url( 'js/jquery.colorbox-min.js', __FILE__ ) );
+			wp_enqueue_script( 'colorboxcaller', plugins_url( 'js/caller.js', __FILE__ ) );
+		}
+
+		/**
+		 * Sets Default settings.
+		 */
+		public function ytubefancybox_default_settings() {
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_die( esc_html__( 'You do not have sufficient permissions to access this page.' ) );
+			}
+
+			if ( 'POST' === $_SERVER['REQUEST_METHOD'] ) {
+				if ( get_option( 'youtube_height' ) ) {
+					update_option( 'youtube_height', filter_input( INPUT_POST, 'youtube_height' ) );
+				} else {
+					add_option( 'youtube_height', filter_input( INPUT_POST, 'youtube_height' ), '', 'yes' );
+				}
+				if ( get_option( 'youtube_width' ) ) {
+					update_option( 'youtube_width', filter_input( INPUT_POST, 'youtube_width' ) );
+				} else {
+					add_option( 'youtube_width', filter_input( INPUT_POST, 'youtube_width' ), '', 'yes' );
+				}
+				if ( get_option( 'autoplay' ) ) {
+					update_option( 'autoplay', filter_input( INPUT_POST, 'autoplay' ) );
+				} else {
+					add_option( 'autoplay', filter_input( INPUT_POST, 'autoplay' ), '', 'yes' );
+				}
+			}
+			?>
+			<style type="text/css">
+				fieldset { border: 1px solid; }
+			</style>
+			<div class="wrap">
+				<h1><?php esc_html_e( 'Youtube FancyBox', 'ytubebox' ); ?></h1>
+
+				<h2>Set Default Options</h2>
+				<hr />
+				<form action="<?php echo esc_url( $_SERVER['PHP_SELF'] ); ?>?page=ytubefancybox" method="post">
+					<table class="form-table">
+						<tr>
+							<th align="left"><?php esc_html_e( 'Height', 'ytubebox' ); ?></th>
+							<td align="left">
+								<input type="text" name="youtube_height" value="<?php echo esc_attr( get_option( 'youtube_height' ) ); ?>" />
+							</td>
+						</tr>
+						<tr>
+							<th align="left"><?php esc_html_e( 'Width', 'ytubebox' ); ?></th>
+							<td align="left">
+								<input type="text" name="youtube_width" value="<?php echo esc_attr( get_option( 'youtube_width' ) ); ?>" />
+							</td>
+						</tr>
+						<tr>
+							<th align="left"><?php esc_html_e( 'Autoplay', 'ytubebox' ); ?></th>
+							<td align="left">
+								<input type="radio" name="autoplay" value="yes"
+									<?php
+									if ( 'yes' === get_option( 'autoplay' ) ) {
+											echo esc_attr( 'checked="checked"' );
+									}
+									?>
+								/>
+								<?php esc_html_e( 'Yes', 'ytubebox' ); ?>
+								<input type="radio" name="autoplay" value="no"
+									<?php
+									if ( 'no' === get_option( 'autoplay' ) ) {
+										echo esc_attr( 'checked="checked"' );
+									}
+									?>
+								/>
+								<?php esc_html_e( 'No', 'ytubebox' ); ?>
+							</td>	
+						</tr>
+						<tr>
+							<th align="left"></th>
+							<td align="left">
+								<input type="submit" value="<?php esc_attr_e( 'Save', 'ytubebox' ); ?>" name="submit" class="button button-primary" />
+							</td>
+						</tr>
+					</table>
+				</form>
+
+			</div>
+
+			<?php
+		}
+
+	}
+
 }
 
-/**
- * function execute shortcode
- * @param array $attr
- * @return html
- */
-function youtubefancybox_url( $attr ) {
+namespace {
 
-	if ( !isset( $attr[ 'height' ] ) ) {
-		$attr[ 'height' ] = get_option( 'youtube_height' );
-	}
-	if ( !isset( $attr[ 'width' ] ) ) {
-		$attr[ 'width' ] = get_option( 'youtube_width' );
-	}
-	if ( !isset( $attr[ 'videoid' ] ) ) {
-		if ( isset( $attr[ 'url' ] ) ) {
-			preg_match( "#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $attr[ 'url' ], $matches );
-			$attr[ 'videoid' ] = $matches[ 0 ];
-		}
+	/**
+	 * Include lib files.
+	 */
+	foreach ( glob( plugin_dir_path( __FILE__ ) . '/lib/*.php' ) as $lib_filename ) {
+		require_once $lib_filename;
 	}
 
-	if ( get_option( 'autoplay' ) ) {
-		$autoplay = get_option( 'autoplay' );
-		if ( $autoplay == "yes" ) {
-			$autoplay = "1";
-		} else {
-			$autoplay = "0";
-		}
-	} else {
-		$autoplay = "1";
-	}
+	global $fancybox, $youtube, $viemo;
+	$fancybox = new \YTubeFancy\Youtubefanybox();
+	$youtube  = new \YTubeFancy\Youtube();
+	$viemo    = new \YTubeFancy\Vimeo();
 
-	if ( isset( $_SERVER[ 'HTTPS' ] ) &&
-	($_SERVER[ 'HTTPS' ] == 'on' || $_SERVER[ 'HTTPS' ] == 1) ||
-	isset( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] ) &&
-	$_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] == 'https' ) {
-		$protocol = 'https://';
-	} else {
-		$protocol = 'http://';
-	}
-
-	if ( isset( $attr[ 'videoid' ] ) ) {
-
-		return '<a class ="youtube" href = "' . $protocol . 'www.youtube.com/embed/' . $attr[ 'videoid' ] . '?rel=0&autoplay=' . $autoplay . '&wmode=transparent">
-					<img src = "' . $protocol . 'img.youtube.com/vi/' . $attr[ 'videoid' ] . '/0.jpg" width = "' . $attr[ 'width' ] . '" height = "' . $attr[ 'height' ] . '"/>
-				</a>';
-	} else {
-		return "\n<br /><span style='clear:both;color:red'>Please Enter Youtube ID or Youtube URL as [youtube videoid='XXXXX']</span>";
-	}
 }
