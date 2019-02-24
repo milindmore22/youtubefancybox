@@ -2,11 +2,11 @@
 
 /**
  * Plugin Name: YouTube FancyBox
- * Plugin URI: http://milindmore22.blogspot.com/
+ * Plugin URI: https://wordpress.org/plugins/youtubefancybox/
  * Description: Display thumbnail of Youtube and Vimeo videos and on clicking on thumbnail it will open in popupbox and play video.
  * Author: Milind More
- * Author URI: http://milindmore22.blogspot.com/
- * Version: 2.0
+ * Author URI: https://milindmore.wordpress.com/
+ * Version: 2.2
  * Text Domain: ytubebox
  * Domain Path: /languages/
  *
@@ -22,9 +22,19 @@ namespace YTubeFancy {
 	class Youtubefanybox {
 
 		/**
+		 * Version Number.
+		 *
+		 * @var int.
+		 */
+		public $version;
+
+		/**
 		 * Class Constructor.
 		 */
 		public function __construct() {
+
+			$this->version = 2.1;
+
 			/**
 			 * If You are admin you will get admin settings
 			 */
@@ -66,7 +76,7 @@ namespace YTubeFancy {
 		public function youtubefancybox_adminjs_file() {
 
 			wp_enqueue_script( 'jquery' );
-			wp_register_script( 'fancybox_admin', plugins_url( 'js/fancybox_admin.js', __FILE__ ) );
+			wp_register_script( 'fancybox_admin', plugins_url( 'js/fancybox_admin.js', __FILE__ ), array( 'jquery' ), $this->version, true );
 
 			$translation_array = array(
 				'youtube_alert' => esc_html__( 'Youtube url you entered might be wrong, Please enter correct URL !', 'ytubebox' ),
@@ -82,10 +92,10 @@ namespace YTubeFancy {
 		 * Enqueue scritps js nessary.
 		 */
 		public function youtubefancybox_js_file() {
-			wp_enqueue_style( 'colorboxcss', plugins_url( 'css/colorbox.css', __FILE__ ) );
+			wp_enqueue_style( 'colorbox-css', plugins_url( 'css/colorbox.css', __FILE__ ), '', $this->version );
 			wp_enqueue_script( 'jquery' );
-			wp_enqueue_script( 'colorboxjs', plugins_url( 'js/jquery.colorbox-min.js', __FILE__ ) );
-			wp_enqueue_script( 'colorboxcaller', plugins_url( 'js/caller.js', __FILE__ ) );
+			wp_enqueue_script( 'colorbox-js', plugins_url( 'js/jquery.colorbox-min.js', __FILE__ ), array( 'jquery' ), $this->version, true );
+			wp_enqueue_script( 'colorbox-caller', plugins_url( 'js/caller.js', __FILE__ ), array( 'jquery', 'colorboxjs' ), $this->version, true );
 		}
 
 		/**
@@ -96,7 +106,7 @@ namespace YTubeFancy {
 				wp_die( esc_html__( 'You do not have sufficient permissions to access this page.' ) );
 			}
 
-			if ( 'POST' === $_SERVER['REQUEST_METHOD'] ) {
+			if ( 'POST' === filter_input( INPUT_SERVER, 'REQUEST_METHOD' ) ) {
 				if ( get_option( 'youtube_height' ) ) {
 					update_option( 'youtube_height', filter_input( INPUT_POST, 'youtube_height' ) );
 				} else {
@@ -122,7 +132,7 @@ namespace YTubeFancy {
 
 				<h2>Set Default Options</h2>
 				<hr />
-				<form action="<?php echo esc_url( $_SERVER['PHP_SELF'] ); ?>?page=ytubefancybox" method="post">
+				<form action="" method="post">
 					<table class="form-table">
 						<tr>
 							<th align="left"><?php esc_html_e( 'Height', 'ytubebox' ); ?></th>
@@ -155,7 +165,7 @@ namespace YTubeFancy {
 									?>
 								/>
 								<?php esc_html_e( 'No', 'ytubebox' ); ?>
-							</td>	
+							</td>
 						</tr>
 						<tr>
 							<th align="left"></th>

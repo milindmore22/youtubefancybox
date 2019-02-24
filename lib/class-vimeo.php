@@ -54,7 +54,7 @@ namespace YTubeFancy {
 						</th>
 						<td align="left">
 							<input type="text" name="t_height" id="t_height" />
-						</td>	
+						</td>
 					</tr>
 					<tr>
 						<th align="left">
@@ -62,7 +62,7 @@ namespace YTubeFancy {
 						</th>
 						<td align="left">
 							<input type="text" name="t_width" id="t_width" />
-						</td>	
+						</td>
 					</tr>
 					<tr>
 						<th align="left">
@@ -79,7 +79,7 @@ namespace YTubeFancy {
 							<input type="text" id="shortcode" readonly="readonly" size="80"/>
 						</td>
 					</tr>
-				</table>	
+				</table>
 			</div>
 			<?php
 			/**
@@ -128,12 +128,12 @@ namespace YTubeFancy {
 			if ( get_option( 'autoplay' ) ) {
 				$autoplay = get_option( 'autoplay' );
 				if ( 'yes' === $autoplay ) {
-					$autoplay = '1';
+					$autoplay = 'autoplay=1&muted=1';
 				} else {
-					$autoplay = '0';
+					$autoplay = 'autoplay=0&muted=0';
 				}
 			} else {
-				$autoplay = '1';
+				$autoplay = 'autoplay=1&muted=1';
 			}
 
 			if ( empty( $attr['videoid'] ) ) {
@@ -141,10 +141,10 @@ namespace YTubeFancy {
 			}
 
 			if ( is_ssl() ) {
-				$embed_url       = 'https://player.vimeo.com/video/' . $attr['videoid'] . '?autoplay=' . $autoplay . '&color=ffffff';
+				$embed_url       = 'https://player.vimeo.com/video/' . $attr['videoid'] . '?' . $autoplay . '&color=ffffff';
 				$embed_image_url = 'https://vimeo.com/api/v2/video/' . $attr['videoid'] . '.json';
 			} else {
-				$embed_url       = 'http://player.vimeo.com/video/' . $attr['videoid'] . '?autoplay=' . $autoplay . '&color=ffffff';
+				$embed_url       = 'http://player.vimeo.com/video/' . $attr['videoid'] . '?' . $autoplay . '&color=ffffff';
 				$embed_image_url = 'http://vimeo.com/api/v2/video/' . $attr['videoid'] . '.json';
 			}
 
