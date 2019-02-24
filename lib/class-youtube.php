@@ -53,7 +53,8 @@ namespace YTubeFancy {
 					'videoid' => '',
 					'height'  => '350',
 					'width'   => '400',
-				), $attr,
+				),
+				$attr,
 				'youtube'
 			);
 
@@ -68,12 +69,12 @@ namespace YTubeFancy {
 			$autoplay = get_option( 'autoplay' );
 			if ( ! empty( $autoplay ) ) {
 				if ( 'yes' === $autoplay ) {
-					$autoplay = '1';
+					$autoplay = 'autoplay=1&mute=1';
 				} else {
-					$autoplay = '0';
+					$autoplay = 'autoplay=0&mute=0';
 				}
 			} else {
-				$autoplay = '1';
+				$autoplay = 'autoplay=1&mute=0';
 			}
 
 			if ( empty( $attr['videoid'] ) ) {
@@ -95,12 +96,11 @@ namespace YTubeFancy {
 			}
 
 				ob_start();
-
-				?>
+			?>
 					<a class="youtube" href="<?php echo esc_url( $embed_url ); ?>">
 						<img src="<?php echo esc_url( $embed_image ); ?>" width="<?php echo esc_attr( $attr['width'] ); ?>" height="<?php echo esc_attr( $attr['height'] ); ?>" />
 					</a>
-				<?php
+			<?php
 
 				return ob_get_clean();
 
@@ -130,7 +130,7 @@ namespace YTubeFancy {
 						</th>
 						<td align="left">
 							<input type="text" name="t_height" id="t_height" />
-						</td>	
+						</td>
 					</tr>
 					<tr>
 						<th align="left">
@@ -138,7 +138,7 @@ namespace YTubeFancy {
 						</th>
 						<td align="left">
 							<input type="text" name="t_width" id="t_width" />
-						</td>	
+						</td>
 					</tr>
 					<tr>
 						<th align="left">
@@ -155,7 +155,7 @@ namespace YTubeFancy {
 							<input type="text" id="shortcode" readonly="readonly" size="80"/>
 						</td>
 					</tr>
-				</table>	
+				</table>
 			</div>
 			<?php
 			/**
