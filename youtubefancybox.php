@@ -1,12 +1,11 @@
 <?php
-
 /**
  * Plugin Name: YouTube FancyBox
  * Plugin URI: https://wordpress.org/plugins/youtubefancybox/
  * Description: Display thumbnail of Youtube and Vimeo videos and on clicking on thumbnail it will open in popupbox and play video.
  * Author: Milind More
  * Author URI: https://milindmore.wordpress.com/
- * Version: 2.2
+ * Version: 2.4
  * Text Domain: ytubebox
  * Domain Path: /languages/
  *
@@ -33,7 +32,7 @@ namespace YTubeFancy {
 		 */
 		public function __construct() {
 
-			$this->version = 2.1;
+			$this->version = 2.4;
 
 			/**
 			 * If You are admin you will get admin settings
@@ -49,8 +48,8 @@ namespace YTubeFancy {
 			 * Adding Shortcode action filter
 			 */
 			add_action( 'wp_head', array( $this, 'youtubefancybox_js_file' ) );
-			add_filter( 'widget_text', array( $this, 'shortcode_unautop' ) );
-			add_filter( 'widget_text', array( $this, 'do_shortcode' ) );
+			add_filter( 'widget_text', 'shortcode_unautop' );
+			add_filter( 'widget_text', 'do_shortcode' );
 			add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ) );
 		}
 
@@ -94,8 +93,8 @@ namespace YTubeFancy {
 		public function youtubefancybox_js_file() {
 			wp_enqueue_style( 'colorbox-css', plugins_url( 'css/colorbox.css', __FILE__ ), '', $this->version );
 			wp_enqueue_script( 'jquery' );
-			wp_enqueue_script( 'colorbox-js', plugins_url( 'js/jquery.colorbox-min.js', __FILE__ ), array( 'jquery' ), $this->version, true );
-			wp_enqueue_script( 'colorbox-caller', plugins_url( 'js/caller.js', __FILE__ ), array( 'jquery', 'colorboxjs' ), $this->version, true );
+			wp_enqueue_script( 'colorbox-js', plugins_url( 'js/jquery.colorbox.js', __FILE__ ), array( 'jquery' ), $this->version, true );
+			wp_enqueue_script( 'colorbox-caller', plugins_url( 'js/caller.js', __FILE__ ), array( 'jquery', 'colorbox-js' ), $this->version, true );
 		}
 
 		/**
