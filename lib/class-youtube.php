@@ -85,12 +85,12 @@ namespace YTubeFancy {
 
 			if ( is_ssl() ) {
 
-				$embed_url   = 'https://www.youtube.com/embed/' . $attr['videoid'] . '?rel=0&autoplay=' . $autoplay . '&wmode=transparent';
+				$embed_url   = 'https://www.youtube.com/embed/' . $attr['videoid'] . '?rel=0&' . $autoplay . '&wmode=transparent';
 				$embed_image = 'https://img.youtube.com/vi/' . $attr['videoid'] . '/0.jpg';
 
 			} else {
 
-				$embed_url   = 'http://www.youtube.com/embed/' . $attr['videoid'] . '?rel=0&autoplay=' . $autoplay . '&wmode=transparent';
+				$embed_url   = 'http://www.youtube.com/embed/' . $attr['videoid'] . '?rel=0&' . $autoplay . '&wmode=transparent';
 				$embed_image = 'http://img.youtube.com/vi/' . $attr['videoid'] . '/0.jpg';
 
 			}
