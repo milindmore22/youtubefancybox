@@ -2,8 +2,8 @@
 Contributors: milindmore22
 Tags: youtubefancybox, youtube, fancybox, popupvideo, lightbox, lightbox youtube
 Requires at least: 3.6
-Tested up to: 5.1
-Stable tag: 2.4
+Tested up to: 5.4.2
+Stable tag: 2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,6 +59,10 @@ Yes, you can add `[youtube url="<youtube video url here>"]`
 
 == Changelog ==
 
+= 2.5 =
+
+Tested upto 5.4.2
+
 = 2.4 =
 
 Fixes warning.
@@ -109,7 +113,5 @@ First release. Compatible with IE9,IE10, Chrome, Firefox
 
 
 == Upgrade notice ==
-Updated to latest jquery colorbox.js
-support ssl
-fixed iphone ipad bugs
-fixed shortcode inside shortcode bug, means you can place it inside other shortcodes
+
+Tested upto 5.4.2
