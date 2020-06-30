@@ -5,7 +5,7 @@
  * Description: Display thumbnail of Youtube and Vimeo videos and on clicking on thumbnail it will open in popupbox and play video.
  * Author: Milind More
  * Author URI: https://milindmore.wordpress.com/
- * Version: 2.4
+ * Version: 2.5
  * Text Domain: ytubebox
  * Domain Path: /languages/
  *
@@ -32,7 +32,7 @@ namespace YTubeFancy {
 		 */
 		public function __construct() {
 
-			$this->version = 2.4;
+			$this->version = 2.5;
 
 			/**
 			 * If You are admin you will get admin settings
