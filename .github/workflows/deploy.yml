@@ -11,7 +11,8 @@ jobs:
       - name: WordPress Plugin Deploy
         uses: milindmore22/action-wordpress-org-plugin-deploy@master
         env:
-          EXCLUDE_LIST: .gitignore .distignore README.md phpcs.xml assets/package-lock.json screenshots/banner-772x250.jpg screenshots/icon-128x128.png screenshots/screenshot-1.png screenshots/screenshot-2.png screenshots/screenshot-3.png screenshots/screenshot-4.png
+          EXCLUDE_LIST: .gitignore .distignore README.md phpcs.xml assets/package-lock.json
           SLUG: youtubefancybox
           WORDPRESS_PASSWORD: ${{ secrets.WORDPRESS_PASSWORD }}
           WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
+          ASSETS_DIR : screenshots
