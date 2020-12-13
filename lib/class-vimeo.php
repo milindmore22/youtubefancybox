@@ -125,15 +125,13 @@ namespace YTubeFancy {
 				}
 			}
 
-			if ( get_option( 'autoplay' ) ) {
-				$autoplay = get_option( 'autoplay' );
-				if ( 'yes' === $autoplay ) {
-					$autoplay = 'autoplay=1&muted=1';
-				} else {
-					$autoplay = 'autoplay=0&muted=0';
-				}
+			$autoplay        = 'autoplay=1&muted=1';
+			$autoplay_option = get_option( 'autoplay' );
+
+			if ( ! empty( $autoplay_option ) && 'yes' === $autoplay_option ) {
+					$autoplay = 'autoplay=1&muted=0';
 			} else {
-				$autoplay = 'autoplay=1&muted=1';
+				$autoplay = 'autoplay=0&muted=0';
 			}
 
 			if ( empty( $attr['videoid'] ) ) {
@@ -165,6 +163,21 @@ namespace YTubeFancy {
 			}
 
 			ob_start();
+			if ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
+
+				$light_box_id = wp_unique_id( 'youtubefancybox-vimeo-lightbox-' );
+				?>
+				<amp-lightbox id="<?php echo esc_attr( $light_box_id ); ?>" layout="nodisplay">
+					<div class="youtubefancybox-amp-lightbox" role="button" tabindex="0">
+						<amp-vimeo width="<?php echo esc_attr( $attr['width'] ); ?>" height="<?php echo esc_attr( $attr['height'] ); ?>" layout="fill" data-videoid="<?php echo esc_attr( $attr['videoid'] ); ?>" <?php echo ( ! empty( $autoplay_option ) && 'yes' === $autoplay_option ) ? 'autoplay' : ''; ?>>	
+						</amp-vimeo>
+					</div>
+				</amp-lightbox>
+				<amp-img on="tap:<?php echo esc_attr( $light_box_id ); ?>" src="<?php echo esc_url( $thumbnail_url ); ?>" width="<?php echo esc_attr( $attr['width'] ); ?>" height="<?php echo esc_attr( $attr['height'] ); ?>" layout="responsive">
+				</amp-img>
+					<?php
+					return ob_get_clean();
+			}
 			?>
 			<a class="vimeo" href="<?php echo esc_url( $embed_url ); ?>">
 				<img src="<?php echo esc_url( $thumbnail_url ); ?>" width="<?php echo esc_attr( $attr['width'] ); ?>" height="<?php echo esc_attr( $attr['height'] ); ?>"/>
