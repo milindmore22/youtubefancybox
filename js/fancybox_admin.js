@@ -1,11 +1,15 @@
-jQuery( document ).ready( function () {
+/**
+ * Admin Scripts for Youtube Fancybox.
+ */
+
+jQuery( document ).ready( function ( $ ) {
     /**
      * Generate shortcode for Youtube
      */
-    jQuery( "#genrate" ).click( function () {
-	var url = jQuery( "#youtubeurl" ).val();
-	var height = jQuery( "#t_height" ).val();
-	var width = jQuery( "#t_width" ).val();
+    $( document ).on( 'click', '#genrate', function () {
+	var url = $( '#youtubeurl' ).val();
+	var height = $( '#t_height' ).val();
+	var width = $( '#t_width' ).val();
 	if ( url ) {
 	    var videoid = youtube_parser( url );
 	    var str = '[youtube videoid="' + videoid + '"';
@@ -19,24 +23,25 @@ jQuery( document ).ready( function () {
 	    str += ']';
 	}
 	if ( videoid ) {
-	    jQuery( "#shortcode" ).val( str );
-	    jQuery( "#shortcode" ).select();
+	    $( '#shortcode' ).val( str );
+	    $( '#shortcode' ).trigger( 'select' );
 	}
     } );
+
     /**
      * Select Shortcode on click
      **/
-    jQuery( "#shortcode" ).click( function () {
-	jQuery( "#shortcode" ).select();
+    $( document ).on( 'click', '#shortcode', function () {
+	$( "#shortcode" ).trigger( 'select' );
     } );
 
     /**
      *  Genrate shortcode for Viemo videos
      **/
-    jQuery( "#genratevimeo" ).click( function () {
-	var url = jQuery( "#vimeourl" ).val();
-	var height = jQuery( "#t_height" ).val();
-	var width = jQuery( "#t_width" ).val();
+    $( document ).on( 'click', '#genratevimeo', function () {
+	var url = $( '#vimeourl' ).val();
+	var height = $( '#t_height' ).val();
+	var width = $( '#t_width' ).val();
 	if ( url ) {
 	    var videoid = vimeo_parser( url );
 	    var str = '[vimeo videoid="' + videoid + '"';
@@ -50,11 +55,12 @@ jQuery( document ).ready( function () {
 	    str += ']';
 	}
 	if ( videoid ) {
-	    jQuery( "#shortcode" ).val( str );
-	    jQuery( "#shortcode" ).select();
+	    $( '#shortcode' ).val( str );
+	    $( '#shortcode' ).trigger( 'select' );
 	}
     } );
 } );
+
 /**
  * function for gets youtube id from url
  **/
@@ -67,6 +73,7 @@ function youtube_parser( url ) {
 	alert( fancybox_admin_obj.youtube_alert );
     }
 }
+
 /**
  * Functin gets viemo id from url
  * @returns {undefined}

@@ -1,0 +1,14 @@
+/*
+* The File contains AMP specific CSS
+*/
+.youtubefancybox-amp-lightbox {
+    background: rgba(0,0,0,0.8);
+    width: 80%;
+    height: 80%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 10%;
+    top:10%;
+}

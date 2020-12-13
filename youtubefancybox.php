@@ -5,11 +5,12 @@
  * Description: Display thumbnail of Youtube and Vimeo videos and on clicking on thumbnail it will open in popupbox and play video.
  * Author: Milind More
  * Author URI: https://milindmore.wordpress.com/
- * Version: 2.5
+ * Version: 2.6
  * Text Domain: ytubebox
  * Domain Path: /languages/
+ * Requires PHP: 5.6
  *
- * @author milind.
+ * @author milind
  * @package ytubefancybox
  */
 
@@ -32,7 +33,7 @@ namespace YTubeFancy {
 		 */
 		public function __construct() {
 
-			$this->version = 2.5;
+			$this->version = 2.6;
 
 			/**
 			 * If You are admin you will get admin settings
@@ -42,12 +43,12 @@ namespace YTubeFancy {
 				 * Adding action calling plugin menu and loading header file
 				 */
 				add_action( 'admin_menu', array( $this, 'youtubefancybox_plugin_main_menu' ) );
-				add_action( 'admin_head', array( $this, 'youtubefancybox_adminjs_file' ) );
+				add_action( 'admin_enqueue_scripts', array( $this, 'youtubefancybox_adminjs_file' ) );
 			}
 			/**
 			 * Adding Shortcode action filter
 			 */
-			add_action( 'wp_head', array( $this, 'youtubefancybox_js_file' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'youtubefancybox_js_file' ) );
 			add_filter( 'widget_text', 'shortcode_unautop' );
 			add_filter( 'widget_text', 'do_shortcode' );
 			add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ) );
@@ -71,15 +72,23 @@ namespace YTubeFancy {
 
 		/**
 		 * Loading js and css files
+		 *
+		 * @param string $hook screen id.
 		 */
-		public function youtubefancybox_adminjs_file() {
+		public function youtubefancybox_adminjs_file( $hook ) {
+
+			$youtubefancybox_admin_screens = array( 'youtube-fancybox_page_vimeo', 'youtube-fancybox_page_ytube', 'toplevel_page_ytubefancybox' );
+
+			if ( ! in_array( $hook, $youtubefancybox_admin_screens, true ) ) {
+				return;
+			}
 
 			wp_enqueue_script( 'jquery' );
 			wp_register_script( 'fancybox_admin', plugins_url( 'js/fancybox_admin.js', __FILE__ ), array( 'jquery' ), $this->version, true );
 
 			$translation_array = array(
-				'youtube_alert' => esc_html__( 'Youtube url you entered might be wrong, Please enter correct URL !', 'ytubebox' ),
-				'viemo_alert'   => esc_html__( 'Viemo url you entered might be wrong, Please enter correct URL !', 'ytubebox' ),
+				'youtube_alert' => esc_html__( 'Youtube URL you entered might be wrong, Please enter correct URL!', 'ytubebox' ),
+				'viemo_alert'   => esc_html__( 'Viemo URL you entered might be wrong, Please enter correct URL!', 'ytubebox' ),
 			);
 
 			wp_localize_script( 'fancybox_admin', 'fancybox_admin_obj', $translation_array );
@@ -91,6 +100,13 @@ namespace YTubeFancy {
 		 * Enqueue scritps js nessary.
 		 */
 		public function youtubefancybox_js_file() {
+
+			// Iif it's AMP page then We will be using AMP components instead.
+			if ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
+				wp_enqueue_style( 'youtubefancybox-amp', plugins_url( 'css/youtubefancybox-amp.css', __FILE__ ), '', $this->version );
+				return;
+			}
+
 			wp_enqueue_style( 'colorbox-css', plugins_url( 'css/colorbox.css', __FILE__ ), '', $this->version );
 			wp_enqueue_script( 'jquery' );
 			wp_enqueue_script( 'colorbox-js', plugins_url( 'js/jquery.colorbox.js', __FILE__ ), array( 'jquery' ), $this->version, true );
