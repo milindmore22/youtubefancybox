@@ -1,14 +1,14 @@
-# YouTube FancyBox
+# Video Lightbox for YouTube/Vimeo
 
 Contributors: milindmore22
 
-A YouTube FancyBox uses fancy-box(light-box) to show YouTube video in a popup box on click of thumbnail which is generated from YouTube video.
+A Video Lightbox for YouTube/Vimeo uses fancy-box(light-box) to show YouTube video in a popup box on click of thumbnail which is generated from YouTube video.
 
 Offical Wordpress Plugin Repo :
 https://wordpress.org/plugins/youtubefancybox/
 ## Description
 
-A Youtube Fancybox uses colorbox /lightbox (thanks to  Jack Moore(http://www.jacklmoore.com/colorbox/) to show YouTube video in a popup box on click of thumbnail which is generated from 
+A Video Lightbox for YouTube/Vimeo uses colorbox /lightbox (thanks to  Jack Moore(http://www.jacklmoore.com/colorbox/) to show YouTube video in a popup box on click of thumbnail which is generated from 
 YouTube video. you can use it with shortcode in page, post and text widget.
 
 ## Example:

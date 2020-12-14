@@ -1,10 +1,10 @@
-=== YouTube FancyBox ===
+=== Video Lightbox for YouTube/Vimeo ===
 Contributors: milindmore22
 Tags: youtubefancybox, youtube, fancy box, popup video, lightbox, lightbox youtube, amp
 Requires at least: 3.6
 Requires PHP: 5.6
 Tested up to: 5.6
-Stable tag: 2.6
+Stable tag: 2.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,29 +12,29 @@ A YouTube/Vimeo FancyBox uses a fancy-box(light-box) to show YouTube/Vimeo video
 
 == Description ==
 
-A Youtube Fancybox uses colorbox thanks to [Jack Moore](http://www.jacklmoore.com/colorbox/) to show YouTube and Vimeo video in a popup box on click of thumbnail which is generated from Youtube and Vimeo video.
+A Video Lightbox for YouTube/Vimeo uses colorbox thanks to [Jack Moore](http://www.jacklmoore.com/colorbox/) to show YouTube and Vimeo video in a popup box on click of thumbnail which is generated from Youtube and Vimeo video.
 you can use it with a shortcode in the page, post, and text widget.
 
 The plugin now has support for the official AMP plugin.
 
 [markdown syntax]: Eg:
-    `[youtube videoid="<youtube videoid goes here>" height="<height goes here>" width="<width goes here>"]`
-    `[youtube url="<youtube url goes here>"]`
+    `&#91;youtube videoid="<youtube videoid goes here>" height="<height goes here>" width="<width goes here>"&#93;`
+    `&#91;youtube url="<youtube url goes here>"&#93;`
 
 in the backend you can generate shortcodes also you can set default height, width, and an option to play video automatically.
 
 Now Supports Vimeo
 
 [markdown syntax]: Eg:
-    `[vimeo videoid="<vimeo videoid goes here>" height="<height goes here>" width="<width goes here>"]`
-    `[vimeo url="<vimeo url goes here>"]`
+    `&#91;vimeo videoid="<vimeo videoid goes here>" height="<height goes here>" width="<width goes here>"&#93;`
+    `&#91;vimeo url="<vimeo url goes here>"&#93;`
 
 
 == Installation ==
 
 1. Upload `youtubefancybox` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Place shortcode like`[youtube videoid="<videoid goes here>"]` in your page, post, text widget
+3. Place shortcode like`&#91;youtube videoid="<videoid goes here>"&#93;` in your page, post, text widget
 
 == Frequently Asked Questions ==
 
@@ -47,11 +47,11 @@ You can set the default height and width on the admin side
 = I don't want to play video after lightbox opens =
 You can set the default autoplay option at the backend
 = I need to set different height and width for each Youtube thumbnail =
-You can set height and width for each image thumbnail in shorcode `[youtube videoid="<videoid>" height="<height>" width="<width>"]`
+You can set height and width for each image thumbnail in shorcode `&#91;youtube videoid="<videoid>" height="<height>" width="<width>"&#93;`
 = Where can I get youtube video id =
 You can find youtube video id at the backend by inserting youtube video URL
 = Can I use youtube video URL instead of video id =
-Yes, you can add `[youtube url="<youtube video URL here>"]`
+Yes, you can add `&#91;youtube url="<youtube video URL here>"&#93;`
 
 == Screenshots ==
 
@@ -61,6 +61,9 @@ Yes, you can add `[youtube url="<youtube video URL here>"]`
 4. Youtube Video in Lightbox
 
 == Changelog ==
+
+= 2.6.1 =
+Renamed plugin and updated logo to avoid copyright violations.
 
 = 2.6 =
 Added Official AMP Plugin Support.
@@ -121,4 +124,4 @@ First release. Compatible with IE9,IE10, Chrome, Firefox
 
 == Upgrade notice ==
 
-Added Official AMP Plugin Support.
+Renamed plugin and updated logo to avoid copyright violations.
