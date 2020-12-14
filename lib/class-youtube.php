@@ -28,7 +28,7 @@ namespace YTubeFancy {
 		 * Adding submenu page for settings
 		 */
 		public function youtubefancybox_plugin_menu() {
-			add_submenu_page( 'ytubefancybox', 'Youtube FancyBox Options', 'Youtube', 'manage_options', 'ytube', array( $this, 'youtubefancybox_options' ) );
+			add_submenu_page( 'ytubefancybox', 'Video Lightbox Options', 'Youtube', 'manage_options', 'ytube', array( $this, 'youtubefancybox_options' ) );
 		}
 
 		/**

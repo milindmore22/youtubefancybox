@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name: YouTube FancyBox
+ * Plugin Name: Video Lightbox for YouTube/Vimeo
  * Plugin URI: https://wordpress.org/plugins/youtubefancybox/
  * Description: Display thumbnail of Youtube and Vimeo videos and on clicking on thumbnail it will open in popupbox and play video.
  * Author: Milind More
  * Author URI: https://milindmore.wordpress.com/
- * Version: 2.6
+ * Version: 2.6.1
  * Text Domain: ytubebox
  * Domain Path: /languages/
  * Requires PHP: 5.6
@@ -17,7 +17,7 @@
 namespace YTubeFancy {
 
 	/**
-	 * Youtube Fancybox main class.
+	 * Video Lightbox main class.
 	 */
 	class Youtubefanybox {
 
@@ -33,7 +33,7 @@ namespace YTubeFancy {
 		 */
 		public function __construct() {
 
-			$this->version = 2.6;
+			$this->version = '2.6.1';
 
 			/**
 			 * If You are admin you will get admin settings
@@ -58,7 +58,7 @@ namespace YTubeFancy {
 		 * Adds Menu page for Youtueb Fancybox.
 		 */
 		public function youtubefancybox_plugin_main_menu() {
-			add_menu_page( 'YouTube FancyBox', 'YouTube FancyBox', 'manage_options', 'ytubefancybox', array( $this, 'ytubefancybox_default_settings' ), '', 6 );
+			add_menu_page( 'Video Lightbox for YouTube/Vimeo', 'Video Lightbox', 'manage_options', 'ytubefancybox', array( $this, 'ytubefancybox_default_settings' ), 'dashicons-format-video', 6 );
 		}
 
 		/**
@@ -143,7 +143,7 @@ namespace YTubeFancy {
 				fieldset { border: 1px solid; }
 			</style>
 			<div class="wrap">
-				<h1><?php esc_html_e( 'Youtube FancyBox', 'ytubebox' ); ?></h1>
+				<h1><?php esc_html_e( 'Video Lightbox', 'ytubebox' ); ?></h1>
 
 				<h2>Set Default Options</h2>
 				<hr />

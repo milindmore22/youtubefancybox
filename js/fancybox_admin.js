@@ -1,10 +1,10 @@
 /**
- * Admin Scripts for Youtube Fancybox.
+ * Admin Scripts for Video Lightbox.
  */
 
 jQuery( document ).ready( function ( $ ) {
     /**
-     * Generate shortcode for Youtube
+     * Generate shortcode for Video Lightbox
      */
     $( document ).on( 'click', '#genrate', function () {
 	var url = $( '#youtubeurl' ).val();
