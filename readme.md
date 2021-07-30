@@ -32,4 +32,4 @@ https://wordpress.org/plugins/youtubefancybox/screenshots/
 
 ## Upgrade notice
 
-Tested upto 5.4.2
+Tested upto 5.8

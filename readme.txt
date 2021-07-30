@@ -1,10 +1,10 @@
 === Video Lightbox for YouTube/Vimeo ===
 Contributors: milindmore22
 Tags: youtubefancybox, youtube, fancy box, popup video, lightbox, lightbox youtube, amp
-Requires at least: 3.6
+Requires at least: 5.6
 Requires PHP: 5.6
-Tested up to: 5.6
-Stable tag: 2.6.1
+Tested up to: 5.8
+Stable tag: 2.6.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,10 @@ Yes, you can add `&#91;youtube url="<youtube video URL here>"&#93;`
 4. Youtube Video in Lightbox
 
 == Changelog ==
+
+= 2.6.2 =
+Fix: short code Generator.
+Updated Tested Tag to 5.8
 
 = 2.6.1 =
 Renamed plugin and updated logo to avoid copyright violations.
@@ -124,4 +128,4 @@ First release. Compatible with IE9,IE10, Chrome, Firefox
 
 == Upgrade notice ==
 
-Renamed plugin and updated logo to avoid copyright violations.
+Fix: short code Generator.
