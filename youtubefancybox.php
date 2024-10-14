@@ -33,7 +33,7 @@ namespace YTubeFancy {
 		 */
 		public function __construct() {
 
-			$this->version = '2.6.3';
+			$this->version = '2.7.0';
 
 			/**
 			 * If You are admin you will get admin settings
