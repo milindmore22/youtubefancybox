@@ -152,7 +152,16 @@ namespace YTubeFancy {
 				/**
 				 * Get thumbnail for vimeo video.
 				 */
-				$response      = wp_remote_get( $embed_image_url );
+				$response = wp_remote_get( $embed_image_url );
+
+				if ( \is_wp_error( $response ) ) {
+					// Return error messages.
+					if ( ! empty( $response ) ) {
+						return '<br /><span style="clear:both;color:red">' . $response->get_error_message() . '</span>';
+					}
+					return '<br /><span style="clear:both;color:red">' . esc_html__( 'Error in fetching Vimeo Video Thumbnail', 'ytubebox' ) . '</span>';
+				}
+
 				$response_body = wp_remote_retrieve_body( $response );
 				$obj           = json_decode( $response_body );
 
@@ -163,25 +172,28 @@ namespace YTubeFancy {
 			}
 
 			ob_start();
-			if ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
+			if ( function_exists( 'amp_is_request' ) && amp_is_request() ) {
 
 				$light_box_id = wp_unique_id( 'youtubefancybox-vimeo-lightbox-' );
 				?>
-				<amp-lightbox id="<?php echo esc_attr( $light_box_id ); ?>" layout="nodisplay">
+				<amp-lightbox class="ytfancybox-lightbox alignfull" id="<?php echo esc_attr( $light_box_id ); ?>" layout="nodisplay">
 					<div class="youtubefancybox-amp-lightbox" role="button" tabindex="0">
+					<span role="button" tabindex="0" on="tap:<?php echo esc_attr( $light_box_id ); ?>.close" class="youtubefancybox-amp-lightbox-close">X</span>
 						<amp-vimeo width="<?php echo esc_attr( $attr['width'] ); ?>" height="<?php echo esc_attr( $attr['height'] ); ?>" layout="fill" data-videoid="<?php echo esc_attr( $attr['videoid'] ); ?>" <?php echo ( ! empty( $autoplay_option ) && 'yes' === $autoplay_option ) ? 'autoplay' : ''; ?>>	
 						</amp-vimeo>
 					</div>
 				</amp-lightbox>
-				<amp-img on="tap:<?php echo esc_attr( $light_box_id ); ?>" src="<?php echo esc_url( $thumbnail_url ); ?>" width="<?php echo esc_attr( $attr['width'] ); ?>" height="<?php echo esc_attr( $attr['height'] ); ?>" layout="responsive">
+				<amp-img class="aligncenter" on="tap:<?php echo esc_attr( $light_box_id ); ?>" src="<?php echo esc_url( $thumbnail_url ); ?>" width="<?php echo esc_attr( $attr['width'] ); ?>" height="<?php echo esc_attr( $attr['height'] ); ?>" layout="intrinsic">
 				</amp-img>
 					<?php
 					return ob_get_clean();
 			}
 			?>
-			<a class="vimeo" href="<?php echo esc_url( $embed_url ); ?>">
-				<img src="<?php echo esc_url( $thumbnail_url ); ?>" width="<?php echo esc_attr( $attr['width'] ); ?>" height="<?php echo esc_attr( $attr['height'] ); ?>"/>
-			</a>
+			<div class="youtubefancybox-lightbox-container aligncenter">
+				<a class="vimeo" href="<?php echo esc_url( $embed_url ); ?>">
+					<img src="<?php echo esc_url( $thumbnail_url ); ?>" width="<?php echo esc_attr( $attr['width'] ); ?>" height="<?php echo esc_attr( $attr['height'] ); ?>"/>
+				</a>
+			</div>
 			<?php
 			return ob_get_clean();
 		}

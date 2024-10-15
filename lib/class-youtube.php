@@ -95,26 +95,28 @@ namespace YTubeFancy {
 
 			ob_start();
 
-			if ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
+			if ( function_exists( 'amp_is_request' ) && amp_is_request() ) {
 				$light_box_id = wp_unique_id( 'youtubefancybox-youtube-lightbox-' );
 				?>
-					<amp-lightbox id="<?php echo esc_attr( $light_box_id ); ?>" layout="nodisplay">
+					<amp-lightbox class="ytfancybox-lightbox alignfull" id="<?php echo esc_attr( $light_box_id ); ?>" layout="nodisplay">
 						<div class="youtubefancybox-amp-lightbox" role="button" tabindex="0">
+							<span role="button" tabindex="0" on="tap:<?php echo esc_attr( $light_box_id ); ?>.close" class="youtubefancybox-amp-lightbox-close">X</span>
 							<amp-youtube width="<?php echo esc_attr( $attr['width'] ); ?>" height="<?php echo esc_attr( $attr['height'] ); ?>" layout="fill" data-videoid="<?php echo esc_attr( $attr['videoid'] ); ?>" <?php echo ( ! empty( $autoplay_option ) && 'yes' === $autoplay_option ) ? 'autoplay' : ''; ?>>
 							</amp-youtube>
 						</div>
 					</amp-lightbox>
-					<amp-img on="tap:<?php echo esc_attr( $light_box_id ); ?>" src="<?php echo esc_url( $embed_image ); ?>" width="<?php echo esc_attr( $attr['width'] ); ?>" height="<?php echo esc_attr( $attr['height'] ); ?>" layout="responsive">
+					<amp-img class="aligncenter" on="tap:<?php echo esc_attr( $light_box_id ); ?>" src="<?php echo esc_url( $embed_image ); ?>" width="<?php echo esc_attr( $attr['width'] ); ?>" height="<?php echo esc_attr( $attr['height'] ); ?>" layout="intrinsic">
 					</amp-img>
 						<?php
 						return ob_get_clean();
 			}
 			?>
+				<div class="youtubefancybox-lightbox-container aligncenter">
 					<a class="youtube" href="<?php echo esc_url( $embed_url ); ?>">
 						<img src="<?php echo esc_url( $embed_image ); ?>" width="<?php echo esc_attr( $attr['width'] ); ?>" height="<?php echo esc_attr( $attr['height'] ); ?>" />
 					</a>
-			<?php
-
+				</div>
+				<?php
 				return ob_get_clean();
 
 		}

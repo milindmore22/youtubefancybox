@@ -2,7 +2,7 @@
 * The File contains AMP specific CSS
 */
 .youtubefancybox-amp-lightbox {
-    background: rgba(0,0,0,0.8);
+    background: #fff;
     width: 80%;
     height: 80%;
     position: fixed;
@@ -11,4 +11,44 @@
     justify-content: center;
     left: 10%;
     top:10%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border-radius: 2px;
+}
+.youtubefancybox-amp-lightbox-close{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: url(images/controls.png) no-repeat -25px 0;
+    width: 25px;
+    height: 25px;
+    text-indent: -9999px;
+    z-index: 100;
+    cursor: pointer;
+}
+
+.youtubefancybox-amp-lightbox-close:hover{
+    background-color: #bbb;
+}
+
+html[amp] amp-lightbox.ytfancybox-lightbox{
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    background-color: #070707;
+    opacity: 1;
+    background: repeating-linear-gradient( -45deg, #161616, #161616 2px, #070707 2px, #070707 10px );
+}
+
+@media (min-width: 700px) {
+    .entry-content > amp-lightbox.alignfull:not(.wp-block-group.has-background) {
+        margin: 0;
+    }
+}
+
+amp-youtube, amp-vimeo{
+    margin: 25px 10px;
+    background: #fff;
 }
