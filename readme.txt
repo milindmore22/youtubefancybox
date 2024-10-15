@@ -1,19 +1,18 @@
 === Video Lightbox for YouTube/Vimeo ===
 Contributors: milindmore22
-Tags: youtubefancybox, youtube, fancy box, popup video, lightbox, lightbox youtube, amp
+Tags: youtube, vimeo, lightbox, popup-video, shortcode
 Requires at least: 5.6
-Requires PHP: 5.6
-Tested up to: 5.8
-Stable tag: 2.6.2
+Requires PHP: 8.0
+Tested up to: 6.6.2
+Stable tag: 2.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A YouTube/Vimeo FancyBox uses a fancy-box(light-box) to show YouTube/Vimeo video in a popup box on click of thumbnail which is generated from YouTube/Vimeo video.
+Embed YouTube/Vimeo videos in a lightbox popup. Easily create thumbnails and customize playback settings. Supports both platforms and is compatible with WordPress.
 
 == Description ==
 
-A Video Lightbox for YouTube/Vimeo uses colorbox thanks to [Jack Moore](http://www.jacklmoore.com/colorbox/) to show YouTube and Vimeo video in a popup box on click of thumbnail which is generated from Youtube and Vimeo video.
-you can use it with a shortcode in the page, post, and text widget.
+Easy YouTube & Vimeo popups! Click thumbnails to watch videos in a sleek lightbox. Works with shortcodes in posts, pages & widgets.
 
 The plugin now has support for the official AMP plugin.
 
@@ -61,6 +60,10 @@ Yes, you can add `&#91;youtube url="<youtube video URL here>"&#93;`
 4. Youtube Video in Lightbox
 
 == Changelog ==
+
+= 2.7.0 =
+Fix : Fixed error where the vimeo data was not reetrieved.
+Updated Tested tag to 6.6.2
 
 = 2.6.2 =
 Fix: short code Generator.
