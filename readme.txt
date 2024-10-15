@@ -4,7 +4,7 @@ Tags: youtube, vimeo, lightbox, popup-video, shortcode
 Requires at least: 5.6
 Requires PHP: 8.0
 Tested up to: 6.6.2
-Stable tag: 2.7.0
+Stable tag: 2.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,6 +60,9 @@ Yes, you can add `&#91;youtube url="<youtube video URL here>"&#93;`
 4. Youtube Video in Lightbox
 
 == Changelog ==
+
+= 2.7.1 =
+Version update
 
 = 2.7.0 =
 Fix : Fixed error where the vimeo data was not reetrieved.
