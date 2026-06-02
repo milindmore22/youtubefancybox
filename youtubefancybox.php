@@ -24,15 +24,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Plugin version.
+ */
 define( 'YTUBE_FANCY_VERSION', '2.7.1' );
+
+/**
+ * Absolute path to the plugin directory.
+ */
 define( 'YTUBE_FANCY_DIR', plugin_dir_path( __FILE__ ) );
+
+/**
+ * URL to the plugin directory.
+ */
 define( 'YTUBE_FANCY_URL', plugin_dir_url( __FILE__ ) );
 
+// Attempt to load the Composer autoloader.
 require_once __DIR__ . '/inc/Autoloader.php';
 if ( ! Autoloader::autoload() ) {
 	return;
 }
 
+// Bootstrap the plugin on plugins_loaded.
 if ( class_exists( 'YTubeFancy\Main' ) ) {
 	add_action( 'plugins_loaded', '\YTubeFancy\load_plugin' );
 }

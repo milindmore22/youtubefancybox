@@ -1,4 +1,9 @@
 <?php
+/**
+ * YouTube shortcode module.
+ *
+ * @package YTubeFancy\Modules\Shortcode
+ */
 
 declare( strict_types = 1 );
 
@@ -10,8 +15,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use YTubeFancy\Contracts\Interfaces\Registrable;
 
+/**
+ * Class Youtube
+ *
+ * Registers the [youtube] shortcode and the admin submenu page
+ * for generating YouTube shortcodes.
+ */
 class Youtube implements Registrable {
 
+	/**
+	 * Register WordPress hooks.
+	 */
 	public function register_hooks(): void {
 		if ( is_admin() ) {
 			add_action( 'admin_menu', array( $this, 'add_submenu_page' ) );
@@ -20,6 +34,9 @@ class Youtube implements Registrable {
 		add_shortcode( 'youtube', array( $this, 'render_shortcode' ) );
 	}
 
+	/**
+	 * Add the Youtube submenu page.
+	 */
 	public function add_submenu_page(): void {
 		add_submenu_page(
 			'ytubefancybox',
@@ -31,6 +48,12 @@ class Youtube implements Registrable {
 		);
 	}
 
+	/**
+	 * Render the [youtube] shortcode.
+	 *
+	 * @param array  $attr Shortcode attributes.
+	 * @return string Shortcode output.
+	 */
 	public function render_shortcode( $attr ): string {
 		if ( ! isset( $attr['height'] ) ) {
 			$attr['height'] = get_option( 'youtube_height' );
@@ -97,6 +120,9 @@ class Youtube implements Registrable {
 		return ob_get_clean();
 	}
 
+	/**
+	 * Render the admin options page for generating YouTube shortcodes.
+	 */
 	public function render_options_page(): void {
 		?>
 		<div class="wrap">

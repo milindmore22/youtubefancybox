@@ -1,4 +1,9 @@
 <?php
+/**
+ * Vimeo shortcode module.
+ *
+ * @package YTubeFancy\Modules\Shortcode
+ */
 
 declare( strict_types = 1 );
 
@@ -10,8 +15,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use YTubeFancy\Contracts\Interfaces\Registrable;
 
+/**
+ * Class Vimeo
+ *
+ * Registers the [vimeo] shortcode and the admin submenu page
+ * for generating Vimeo shortcodes.
+ */
 class Vimeo implements Registrable {
 
+	/**
+	 * Register WordPress hooks.
+	 */
 	public function register_hooks(): void {
 		if ( is_admin() ) {
 			add_action( 'admin_menu', array( $this, 'add_submenu_page' ) );
@@ -20,6 +34,9 @@ class Vimeo implements Registrable {
 		add_shortcode( 'vimeo', array( $this, 'render_shortcode' ) );
 	}
 
+	/**
+	 * Add the Vimeo submenu page.
+	 */
 	public function add_submenu_page(): void {
 		add_submenu_page(
 			'ytubefancybox',
@@ -31,6 +48,9 @@ class Vimeo implements Registrable {
 		);
 	}
 
+	/**
+	 * Render the admin options page for generating Vimeo shortcodes.
+	 */
 	public function render_options_page(): void {
 		?>
 		<div class="wrap">
@@ -72,6 +92,12 @@ class Vimeo implements Registrable {
 		<?php
 	}
 
+	/**
+	 * Render the [vimeo] shortcode.
+	 *
+	 * @param array  $attr Shortcode attributes.
+	 * @return string Shortcode output.
+	 */
 	public function render_shortcode( $attr ): string {
 		if ( empty( $attr['height'] ) ) {
 			$attr['height'] = get_option( 'youtube_height' );

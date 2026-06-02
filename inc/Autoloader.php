@@ -1,4 +1,11 @@
 <?php
+/**
+ * Autoloader for PHP classes.
+ *
+ * Wraps the Composer autoloader to provide graceful failure if it is missing.
+ *
+ * @package YTubeFancy
+ */
 
 declare( strict_types = 1 );
 
@@ -8,9 +15,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Class Autoloader
+ */
 final class Autoloader {
+
+	/**
+	 * Whether the autoloader has been loaded.
+	 *
+	 * @var bool
+	 */
 	protected static bool $is_loaded = false;
 
+	/**
+	 * Attempts to autoload the Composer dependencies.
+	 *
+	 * @return bool True if autoloader is available, false otherwise.
+	 */
 	public static function autoload(): bool {
 		if ( defined( 'YTUBE_FANCY_AUTOLOAD' ) && false === YTUBE_FANCY_AUTOLOAD ) {
 			return true;
@@ -26,6 +47,12 @@ final class Autoloader {
 		return self::$is_loaded;
 	}
 
+	/**
+	 * Attempts to load the autoloader file, if it exists.
+	 *
+	 * @param string $autoloader_file The path to the autoloader file.
+	 * @return bool True if loaded successfully, false otherwise.
+	 */
 	protected static function require_autoloader( string $autoloader_file ): bool {
 		if ( ! is_readable( $autoloader_file ) ) {
 			self::missing_autoloader_notice();
@@ -35,6 +62,9 @@ final class Autoloader {
 		return (bool) require_once $autoloader_file;
 	}
 
+	/**
+	 * Displays a notice if the autoloader is missing.
+	 */
 	protected static function missing_autoloader_notice(): void {
 		$hooks = array(
 			'admin_notices',

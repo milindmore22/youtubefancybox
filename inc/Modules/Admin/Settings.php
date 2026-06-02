@@ -1,4 +1,9 @@
 <?php
+/**
+ * Admin settings module.
+ *
+ * @package YTubeFancy\Modules\Admin
+ */
 
 declare( strict_types = 1 );
 
@@ -10,12 +15,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use YTubeFancy\Contracts\Interfaces\Registrable;
 
+/**
+ * Class Settings
+ *
+ * Handles the admin settings page for the plugin, including the menu
+ * registration and the default options form (height, width, autoplay).
+ */
 class Settings implements Registrable {
 
+	/**
+	 * Register WordPress hooks.
+	 */
 	public function register_hooks(): void {
 		add_action( 'admin_menu', array( $this, 'add_admin_menu' ) );
 	}
 
+	/**
+	 * Add the main admin menu page.
+	 */
 	public function add_admin_menu(): void {
 		add_menu_page(
 			'Video Lightbox for YouTube/Vimeo',
@@ -28,6 +45,9 @@ class Settings implements Registrable {
 		);
 	}
 
+	/**
+	 * Render the settings page.
+	 */
 	public function render_settings_page(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_die( esc_html__( 'You do not have sufficient permissions to access this page.' ) );
@@ -40,6 +60,9 @@ class Settings implements Registrable {
 		$this->display_settings_form();
 	}
 
+	/**
+	 * Save the default settings.
+	 */
 	private function save_settings(): void {
 		$fields = array(
 			'youtube_height',
@@ -57,6 +80,9 @@ class Settings implements Registrable {
 		}
 	}
 
+	/**
+	 * Display the settings form.
+	 */
 	private function display_settings_form(): void {
 		?>
 		<style type="text/css">
