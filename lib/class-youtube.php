@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 /**
  * Description of Youtube
  *
@@ -77,7 +80,7 @@ namespace YTubeFancy {
 
 			if ( empty( $attr['videoid'] ) ) {
 
-				return '<br /><span style="clear:both;color:red">' . esc_html__( 'Please Enter Youtube ID or Youtube URL as [youtube videoid="XXXXX"]', 'ytubebox' ) . '</span>';
+				return '<br /><span style="clear:both;color:red">' . esc_html__( 'Please Enter Youtube ID or Youtube URL as [youtube videoid="XXXXX"]', 'youtubefancybox' ) . '</span>';
 
 			}
 
@@ -128,12 +131,12 @@ namespace YTubeFancy {
 			?>
 			<div class="wrap">
 
-				<h2><?php esc_html_e( 'Generate Youtube Shortcode', 'ytubebox' ); ?></h2>
+				<h2><?php esc_html_e( 'Generate Youtube Shortcode', 'youtubefancybox' ); ?></h2>
 				<hr />
 				<table class="form-table">
 					<tr>
 						<th align="left">
-							<?php esc_html_e( 'Enter Youtube URL', 'ytubebox' ); ?>
+							<?php esc_html_e( 'Enter Youtube URL', 'youtubefancybox' ); ?>
 						</th>
 						<td align="left">
 							<input type="text" name="youtubeurl" id="youtubeurl" size="80" />
@@ -141,7 +144,7 @@ namespace YTubeFancy {
 					</tr>
 					<tr>
 						<th align="left">
-							<?php esc_html_e( 'Height for Image Thumbnail', 'ytubebox' ); ?>
+							<?php esc_html_e( 'Height for Image Thumbnail', 'youtubefancybox' ); ?>
 						</th>
 						<td align="left">
 							<input type="text" name="t_height" id="t_height" />
@@ -149,7 +152,7 @@ namespace YTubeFancy {
 					</tr>
 					<tr>
 						<th align="left">
-							<?php esc_html_e( 'Width for Image Thumbnail', 'ytubebox' ); ?>
+							<?php esc_html_e( 'Width for Image Thumbnail', 'youtubefancybox' ); ?>
 						</th>
 						<td align="left">
 							<input type="text" name="t_width" id="t_width" />
@@ -160,7 +163,7 @@ namespace YTubeFancy {
 
 						</th>
 						<td align="left">
-							<input type="button" name="getshortcode" value="<?php esc_attr_e( 'Generate', 'ytubebox' ); ?>" id="genrate" class="button button-primary"/>
+							<input type="button" name="getshortcode" value="<?php esc_attr_e( 'Generate', 'youtubefancybox' ); ?>" id="genrate" class="button button-primary"/>
 						</td>
 					</tr>
 					<tr>

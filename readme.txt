@@ -1,14 +1,14 @@
 === Video Lightbox for YouTube/Vimeo ===
 Contributors: milindmore22
 Tags: youtube, vimeo, lightbox, popup-video, shortcode
-Requires at least: 5.6
-Requires PHP: 8.0
-Tested up to: 6.6.2
+Requires at least: 6.7
+Requires PHP: 8.1
+Tested up to: 7.0
 Stable tag: 2.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Embed YouTube/Vimeo videos in a lightbox popup. Easily create thumbnails and customize playback settings. Supports both platforms and is compatible with WordPress.
+Display YouTube/Vimeo thumbnails that open in a lightbox popup. Easy shortcode generator with custom height, width & autoplay.
 
 == Description ==
 
