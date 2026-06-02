@@ -1,88 +1,76 @@
 {
-    "name": "rtcamp/universal-openai-connector",
-    "version": "1.0.1",
-    "description": "Universal Open AI Connector for the PHP AI Client SDK. Works as both a Composer package and WordPress plugin.",
-    "license": "GPL-2.0-or-later",
-    "keywords": [
-        "ai",
-        "openai",
-        "llm",
-        "wordpress",
-        "openai api"
-    ],
-    "authors": [
-        {
-            "name": "rtCamp",
-            "homepage": "https://rtcamp.com"
-        }
-    ],
-    "homepage": "https://github.com/rtcamp/universal-openai-connector",
-    "support": {
-        "issues": "https://github.com/rtcamp/universal-openai-connector/issues",
-        "source": "https://github.com/rtcamp/universal-openai-connector"
-    },
-    "require": {
-        "php": ">=7.4"
-    },
-    "suggest": {
-        "wordpress/php-ai-client": "Required. The core PHP AI Client SDK that this provider extends."
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://wpackagist.org",
-            "only": [
-                "wpackagist-plugin/*",
-                "wpackagist-theme/*"
-            ]
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "rtCamp\\UniversalOpenAiConnector\\": "src/"
-        }
-    },
-    "require-dev": {
-        "automattic/vipwpcs": "^3.0",
-				"wordpress/php-ai-client": "^1.3",
-        "composer/installers": "^2.3",
-        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
-        "phpcompatibility/php-compatibility": "^10.0.0-alpha",
-        "phpcompatibility/phpcompatibility-wp": "^3.0.0-alpha",
-        "phpstan/extension-installer": "^1.3",
-        "phpstan/phpstan": "^2.1.22",
-        "phpstan/phpstan-deprecation-rules": "^2.0.3",
-        "slevomat/coding-standard": "^8.0",
-        "squizlabs/php_codesniffer": "^3.9",
-        "szepeviktor/phpstan-wordpress": "^2.0.2",
-        "wp-coding-standards/wpcs": "^3.1",
-        "wpackagist-plugin/plugin-check": "~1.6.0"
-    },
-    "config": {
-        "allow-plugins": {
-            "composer/installers": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "php-http/discovery": true,
-            "phpstan/extension-installer": true
-        },
-        "optimize-autoloader": true,
-        "platform": {
-            "php": "7.4"
-        },
-        "sort-packages": true
-    },
-    "extra": {
-        "installer-paths": {
-            "vendor/{$vendor}/{$name}/": [
-                "wpackagist-plugin/plugin-check"
-            ]
-        }
-    },
-    "scripts": {
-        "format": "phpcbf",
-        "lint": "phpcs",
-        "phpstan": "phpstan analyse --memory-limit=1G"
-    }
+	"name": "milindmore22/youtubefancybox",
+	"description": "Display thumbnail of Youtube and Vimeo videos and on clicking on thumbnail it will open in popupbox and play video.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "Milind More",
+			"homepage": "https://milindmore.wordpress.com/"
+		}
+	],
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"phpstan/extension-installer": true,
+			"composer/installers": true
+		},
+		"platform": {
+			"php": "8.1"
+		},
+		"sort-packages": true,
+		"preferred-install": "dist"
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"extra": {
+		"installer-paths": {
+			"vendor/{$vendor}/{$name}/": [
+				"wpackagist-plugin/plugin-check"
+			]
+		}
+	},
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://wpackagist.org",
+			"only": [
+				"wpackagist-plugin/*",
+				"wpackagist-theme/*"
+			]
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"YTubeFancy\\": "inc/"
+		}
+	},
+	"require": {
+		"php": "^8.1"
+	},
+	"require-dev": {
+		"automattic/vipwpcs": "^3.0",
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+		"phpcompatibility/php-compatibility": "^10.0.0-alpha",
+		"phpcompatibility/phpcompatibility-wp": "^3.0.0-alpha",
+		"phpstan/extension-installer": "^1.3",
+		"phpstan/phpstan-deprecation-rules": "^2.0.3",
+		"phpstan/phpstan-phpunit": "^2.0.3",
+		"phpstan/phpstan": "^2.1.22",
+		"phpunit/phpunit": "^8.5|^9.6",
+		"slevomat/coding-standard": "^8.0",
+		"squizlabs/php_codesniffer": "^3.9",
+		"szepeviktor/phpstan-wordpress": "^2.0.2",
+		"wp-coding-standards/wpcs": "^3.1",
+		"wp-phpunit/wp-phpunit": "^6.5",
+		"wpackagist-plugin/plugin-check": "~1.6.0",
+		"yoast/phpunit-polyfills": "^4.0"
+	},
+	"scripts": {
+		"format": "phpcbf",
+		"lint": "phpcs",
+		"phpstan": "phpstan analyse --memory-limit=1G",
+		"test": "vendor/bin/phpunit -c phpunit.xml.dist",
+		"test-multisite": "WP_MULTISITE=1 phpunit --exclude-group=ms-excluded"
+	}
 }

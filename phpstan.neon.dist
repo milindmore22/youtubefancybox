@@ -20,13 +20,13 @@ parameters:
 		bootstrapFiles:
 				- youtubefancybox.php
 
-		paths:
-				- youtubefancybox.php
-				- lib/
+	paths:
+			- youtubefancybox.php
+			- inc/
 
 		excludePaths:
 			analyse:
 				- tests/
 				- vendor/
 			analyseAndScan:
-				- node_modules (?)
+				- node_modules/

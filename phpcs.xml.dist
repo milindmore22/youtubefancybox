@@ -4,10 +4,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/PHPCSStandards/PHP_CodeSniffer/master/phpcs.xsd"
 >
-	<description>Sniffs for AdvancedScreenOptions plugin</description>
+	<description>Sniffs for Video Lightbox for YouTube/Vimeo plugin</description>
 
 	<!-- What to scan: include any root-level PHP files, and the /inc folder -->
-	<file>./lib/</file>
+	<file>./inc/</file>
 	<file>./youtubefancybox.php</file>
 
 	<!-- These are excluded from the above paths.-->
@@ -220,18 +220,12 @@
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="universal-openai-connector" />
+				<element value="youtubefancybox" />
 			</property>
 		</properties>
 	</rule>
 
 	<!-- Register custom capabilities -->
 	<rule ref="WordPress.WP.Capabilities">
-		<properties>
-			<property name="custom_capabilities" type="array">
-				<element value="universal-openai-connector_manage_settings"/>
-			</property>
-		</properties>
-	</rule>
 
 </ruleset>
