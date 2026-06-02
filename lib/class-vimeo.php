@@ -37,12 +37,12 @@ namespace YTubeFancy {
 		public function vimeofancybox_options() {
 			?>
 			<div class="wrap">
-				<h2><?php esc_html_e( 'Generate Vimeo Shortcode', 'ytubebox' ); ?></h2>
+				<h2><?php esc_html_e( 'Generate Vimeo Shortcode', 'youtubefancybox' ); ?></h2>
 				<hr />
 				<table class="form-table">
 					<tr>
 						<th align="left">
-							<?php esc_html_e( 'Enter Vimeo URL', 'ytubebox' ); ?>
+							<?php esc_html_e( 'Enter Vimeo URL', 'youtubefancybox' ); ?>
 						</th>
 						<td align="left">
 							<input type="text" id="vimeourl" size="80" />
@@ -50,7 +50,7 @@ namespace YTubeFancy {
 					</tr>
 					<tr>
 						<th align="left">
-							<?php esc_html_e( 'Height for Image Thumbnail', 'ytubebox' ); ?>
+							<?php esc_html_e( 'Height for Image Thumbnail', 'youtubefancybox' ); ?>
 						</th>
 						<td align="left">
 							<input type="text" name="t_height" id="t_height" />
@@ -58,7 +58,7 @@ namespace YTubeFancy {
 					</tr>
 					<tr>
 						<th align="left">
-							<?php esc_html_e( 'Width for Image Thumbnail', 'ytubebox' ); ?>
+							<?php esc_html_e( 'Width for Image Thumbnail', 'youtubefancybox' ); ?>
 						</th>
 						<td align="left">
 							<input type="text" name="t_width" id="t_width" />
@@ -69,7 +69,7 @@ namespace YTubeFancy {
 
 						</th>
 						<td align="left">
-							<input type="button" name="getshortcode" value="<?php esc_attr_e( 'Generate', 'ytubebox' ); ?>" id="genratevimeo" class="button button-primary"/>
+							<input type="button" name="getshortcode" value="<?php esc_attr_e( 'Generate', 'youtubefancybox' ); ?>" id="genratevimeo" class="button button-primary"/>
 						</td>
 					</tr>
 					<tr>
@@ -135,7 +135,7 @@ namespace YTubeFancy {
 			}
 
 			if ( empty( $attr['videoid'] ) ) {
-				return '<br /><span style="clear:both;color:red">' . esc_html__( 'Please Enter Vimeo ID or Vimeo URL as [vimeo videoid="XXXXX"]', 'ytubebox' ) . '</span>';
+				return '<br /><span style="clear:both;color:red">' . esc_html__( 'Please Enter Vimeo ID or Vimeo URL as [vimeo videoid="XXXXX"]', 'youtubefancybox' ) . '</span>';
 			}
 
 			if ( is_ssl() ) {
@@ -159,7 +159,7 @@ namespace YTubeFancy {
 					if ( ! empty( $response ) ) {
 						return '<br /><span style="clear:both;color:red">' . $response->get_error_message() . '</span>';
 					}
-					return '<br /><span style="clear:both;color:red">' . esc_html__( 'Error in fetching Vimeo Video Thumbnail', 'ytubebox' ) . '</span>';
+					return '<br /><span style="clear:both;color:red">' . esc_html__( 'Error in fetching Vimeo Video Thumbnail', 'youtubefancybox' ) . '</span>';
 				}
 
 				$response_body = wp_remote_retrieve_body( $response );
