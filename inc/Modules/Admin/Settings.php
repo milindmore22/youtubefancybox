@@ -75,7 +75,7 @@ class Settings implements Registrable {
 			if ( get_option( $field ) ) {
 				update_option( $field, $value );
 			} else {
-				add_option( $field, $value, '', 'yes' );
+				add_option( $field, $value, '', true );
 			}
 		}
 	}

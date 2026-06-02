@@ -51,10 +51,10 @@ class Youtube implements Registrable {
 	/**
 	 * Render the [youtube] shortcode.
 	 *
-	 * @param array $attr Shortcode attributes.
+	 * @param array<string, string> $attr Shortcode attributes.
 	 * @return string Shortcode output.
 	 */
-	public function render_shortcode( $attr ): string {
+	public function render_shortcode( array $attr ): string {
 		if ( ! isset( $attr['height'] ) ) {
 			$attr['height'] = get_option( 'youtube_height' );
 		}
@@ -108,7 +108,7 @@ class Youtube implements Registrable {
 			<amp-img class="aligncenter" on="tap:<?php echo esc_attr( $light_box_id ); ?>" src="<?php echo esc_url( $embed_image ); ?>" width="<?php echo esc_attr( $attr['width'] ); ?>" height="<?php echo esc_attr( $attr['height'] ); ?>" layout="intrinsic">
 			</amp-img>
 			<?php
-			return ob_get_clean();
+			return (string) ob_get_clean();
 		}
 		?>
 		<div class="youtubefancybox-lightbox-container aligncenter">
@@ -117,7 +117,7 @@ class Youtube implements Registrable {
 			</a>
 		</div>
 		<?php
-		return ob_get_clean();
+		return (string) ob_get_clean();
 	}
 
 	/**

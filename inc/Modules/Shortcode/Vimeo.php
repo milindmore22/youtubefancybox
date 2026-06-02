@@ -95,10 +95,10 @@ class Vimeo implements Registrable {
 	/**
 	 * Render the [vimeo] shortcode.
 	 *
-	 * @param array $attr Shortcode attributes.
+	 * @param array<string, string> $attr Shortcode attributes.
 	 * @return string Shortcode output.
 	 */
-	public function render_shortcode( $attr ): string {
+	public function render_shortcode( array $attr ): string {
 		if ( empty( $attr['height'] ) ) {
 			$attr['height'] = get_option( 'youtube_height' );
 		}
@@ -143,10 +143,7 @@ class Vimeo implements Registrable {
 			$response = wp_remote_get( $embed_image_url ); // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.wp_remote_get_wp_remote_get
 
 			if ( is_wp_error( $response ) ) {
-				if ( ! empty( $response ) ) {
-					return '<br /><span style="clear:both;color:red">' . $response->get_error_message() . '</span>';
-				}
-				return '<br /><span style="clear:both;color:red">' . esc_html__( 'Error in fetching Vimeo Video Thumbnail', 'youtubefancybox' ) . '</span>';
+				return '<br /><span style="clear:both;color:red">' . $response->get_error_message() . '</span>';
 			}
 
 			$response_body = wp_remote_retrieve_body( $response );
@@ -171,7 +168,7 @@ class Vimeo implements Registrable {
 			<amp-img class="aligncenter" on="tap:<?php echo esc_attr( $light_box_id ); ?>" src="<?php echo esc_url( $thumbnail_url ); ?>" width="<?php echo esc_attr( $attr['width'] ); ?>" height="<?php echo esc_attr( $attr['height'] ); ?>" layout="intrinsic">
 			</amp-img>
 			<?php
-			return ob_get_clean();
+			return (string) ob_get_clean();
 		}
 		?>
 		<div class="youtubefancybox-lightbox-container aligncenter">
@@ -180,6 +177,6 @@ class Vimeo implements Registrable {
 			</a>
 		</div>
 		<?php
-		return ob_get_clean();
+		return (string) ob_get_clean();
 	}
 }
