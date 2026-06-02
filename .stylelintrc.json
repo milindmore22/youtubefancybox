@@ -7,7 +7,8 @@
 		"**/*.js",
 		"**/*.json",
 		"**/*.php",
-		"**/*.svg"
+		"**/*.svg",
+		"assets/src/css/colorbox.css"
 	],
 	"rules": {
 		"selector-class-pattern": null,

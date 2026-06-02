@@ -226,6 +226,6 @@
 	</rule>
 
 	<!-- Register custom capabilities -->
-	<rule ref="WordPress.WP.Capabilities">
+	<rule ref="WordPress.WP.Capabilities" />
 
 </ruleset>
