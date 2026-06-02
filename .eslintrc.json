@@ -17,9 +17,12 @@
 			}
 		}
 	},
+	"ignorePatterns": [
+		"assets/src/js/jquery.colorbox.js"
+	],
 	"globals": {
-		"_": true,
-		"ScreenOptionsSettings": true
+		"jQuery": true,
+		"fancybox_admin_obj": true
 	},
 	"rules": {
 		"eslint-comments/no-unlimited-disable": "error",

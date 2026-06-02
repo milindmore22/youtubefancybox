@@ -43,6 +43,7 @@ html[amp] amp-lightbox.ytfancybox-lightbox {
 }
 
 @media ( min-width: 700px ) {
+
 	.entry-content > amp-lightbox.alignfull:not( .wp-block-group.has-background ) {
 		margin: 0;
 	}

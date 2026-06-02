@@ -31,12 +31,12 @@ final class Main {
 	 *
 	 * @var class-string<\YTubeFancy\Contracts\Interfaces\Registrable>[]
 	 */
-	private const REGISTRABLE_CLASSES = array(
+	private const REGISTRABLE_CLASSES = [
 		Modules\Admin\Settings::class,
 		Modules\Shortcode\Youtube::class,
 		Modules\Shortcode\Vimeo::class,
 		Modules\Core\Assets::class,
-	);
+	];
 
 	/**
 	 * {@inheritDoc}

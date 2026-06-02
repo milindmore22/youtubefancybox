@@ -30,10 +30,10 @@ class Assets implements Registrable {
 	 */
 	public function register_hooks(): void {
 		if ( is_admin() ) {
-			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
+			add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_assets' ] );
 		}
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_frontend_assets' ) );
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_frontend_assets' ] );
 		add_filter( 'widget_text', 'shortcode_unautop' );
 		add_filter( 'widget_text', 'do_shortcode' );
 	}
@@ -44,11 +44,11 @@ class Assets implements Registrable {
 	 * @param string $hook The current admin page hook suffix.
 	 */
 	public function enqueue_admin_assets( string $hook ): void {
-		$admin_screens = array(
+		$admin_screens = [
 			'video-lightbox_page_vimeo',
 			'video-lightbox_page_ytube',
 			'toplevel_page_ytubefancybox',
-		);
+		];
 
 		if ( ! in_array( $hook, $admin_screens, true ) ) {
 			return;
@@ -69,10 +69,10 @@ class Assets implements Registrable {
 		wp_localize_script(
 			'fancybox_admin',
 			'fancybox_admin_obj',
-			array(
+			[
 				'youtube_alert' => esc_html__( 'Youtube URL you entered might be wrong, Please enter correct URL!', 'youtubefancybox' ),
 				'viemo_alert'   => esc_html__( 'Viemo URL you entered might be wrong, Please enter correct URL!', 'youtubefancybox' ),
-			)
+			]
 		);
 
 		wp_enqueue_script( 'fancybox_admin' );
@@ -135,16 +135,16 @@ class Assets implements Registrable {
 	 * @param string $relative_path Relative path from plugin root to the asset.php file.
 	 * @return array{ dependencies: string[], version: string } Asset metadata.
 	 */
-	private function get_asset( string $relative_path ): array {
+	private function get_asset( string $relative_path ): array { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found
 		$path = YTUBE_FANCY_DIR . $relative_path;
 
 		if ( file_exists( $path ) ) {
-			return require $path;
+			return require $path; // phpcs:ignore WordPressVIPMinimum.Files.IncludingFile.UsingVariable
 		}
 
-		return array(
-			'dependencies' => array(),
+		return [
+			'dependencies' => [],
 			'version'      => YTUBE_FANCY_VERSION,
-		);
+		];
 	}
 }

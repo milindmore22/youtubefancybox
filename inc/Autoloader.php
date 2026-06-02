@@ -59,17 +59,17 @@ final class Autoloader {
 			return false;
 		}
 
-		return (bool) require_once $autoloader_file;
+		return (bool) require_once $autoloader_file; // phpcs:ignore WordPressVIPMinimum.Files.IncludingFile.UsingVariable
 	}
 
 	/**
 	 * Displays a notice if the autoloader is missing.
 	 */
 	protected static function missing_autoloader_notice(): void {
-		$hooks = array(
+		$hooks = [
 			'admin_notices',
 			'network_admin_notices',
-		);
+		];
 
 		foreach ( $hooks as $hook ) {
 			add_action(
@@ -78,15 +78,15 @@ final class Autoloader {
 					$error_message = __( 'Video Lightbox for YouTube/Vimeo: The Composer autoloader was not found. If you installed the plugin from the GitHub source code, make sure to run `composer install`.', 'youtubefancybox' );
 
 					if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-						error_log( esc_html( $error_message ) );
+						error_log( esc_html( $error_message ) ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
 					}
 
 					wp_admin_notice(
 						$error_message,
-						array(
+						[
 							'type'    => 'error',
 							'dismiss' => false,
-						)
+						]
 					);
 				}
 			);

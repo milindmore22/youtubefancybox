@@ -228,4 +228,10 @@
 	<!-- Register custom capabilities -->
 	<rule ref="WordPress.WP.Capabilities" />
 
+	<!-- Exclude main plugin file from PHPCompatibility ForbiddenNames sniff
+		 as define() calls at namespace level are not OO constants. -->
+	<rule ref="PHPCompatibility.Keywords.ForbiddenNames">
+		<exclude-pattern>./youtubefancybox.php</exclude-pattern>
+	</rule>
+
 </ruleset>

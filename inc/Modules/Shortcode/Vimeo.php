@@ -28,10 +28,10 @@ class Vimeo implements Registrable {
 	 */
 	public function register_hooks(): void {
 		if ( is_admin() ) {
-			add_action( 'admin_menu', array( $this, 'add_submenu_page' ) );
+			add_action( 'admin_menu', [ $this, 'add_submenu_page' ] );
 		}
 
-		add_shortcode( 'vimeo', array( $this, 'render_shortcode' ) );
+		add_shortcode( 'vimeo', [ $this, 'render_shortcode' ] );
 	}
 
 	/**
@@ -44,7 +44,7 @@ class Vimeo implements Registrable {
 			'Vimeo',
 			'manage_options',
 			'vimeo',
-			array( $this, 'render_options_page' )
+			[ $this, 'render_options_page' ]
 		);
 	}
 
@@ -95,7 +95,7 @@ class Vimeo implements Registrable {
 	/**
 	 * Render the [vimeo] shortcode.
 	 *
-	 * @param array  $attr Shortcode attributes.
+	 * @param array $attr Shortcode attributes.
 	 * @return string Shortcode output.
 	 */
 	public function render_shortcode( $attr ): string {
@@ -108,24 +108,24 @@ class Vimeo implements Registrable {
 		}
 
 		$attr = shortcode_atts(
-			array(
+			[
 				'url'     => '',
 				'videoid' => '',
 				'height'  => '350',
 				'width'   => '400',
-			),
+			],
 			$attr,
 			'vimeo'
 		);
 
 		if ( empty( $attr['videoid'] ) && ! empty( $attr['url'] ) ) {
-			$matches        = array();
+			$matches = [];
 			preg_match( "#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $attr['url'], $matches );
 			$attr['videoid'] = $matches[0] ?? '';
 		}
 
 		$autoplay_option = get_option( 'autoplay' );
-		$autoplay        = ( ! empty( $autoplay_option ) && 'yes' === $autoplay_option )
+		$autoplay        = ( ! empty( $autoplay_option ) && 'yes' === $autoplay_option ) // phpcs:ignore SlevomatCodingStandard.PHP.UselessParentheses.UselessParentheses
 			? 'autoplay=1&muted=0'
 			: 'autoplay=0&muted=0';
 
@@ -140,7 +140,7 @@ class Vimeo implements Registrable {
 		$thumbnail_url = wp_cache_get( 'vimeo_thumnail_' . $attr['videoid'], 'ytubefancybox' );
 
 		if ( false === $thumbnail_url ) {
-			$response = wp_remote_get( $embed_image_url );
+			$response = wp_remote_get( $embed_image_url ); // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.wp_remote_get_wp_remote_get
 
 			if ( is_wp_error( $response ) ) {
 				if ( ! empty( $response ) ) {
@@ -164,7 +164,7 @@ class Vimeo implements Registrable {
 			<amp-lightbox class="ytfancybox-lightbox alignfull" id="<?php echo esc_attr( $light_box_id ); ?>" layout="nodisplay">
 				<div class="youtubefancybox-amp-lightbox" role="button" tabindex="0">
 					<span role="button" tabindex="0" on="tap:<?php echo esc_attr( $light_box_id ); ?>.close" class="youtubefancybox-amp-lightbox-close">X</span>
-					<amp-vimeo width="<?php echo esc_attr( $attr['width'] ); ?>" height="<?php echo esc_attr( $attr['height'] ); ?>" layout="fill" data-videoid="<?php echo esc_attr( $attr['videoid'] ); ?>" <?php echo ( ! empty( $autoplay_option ) && 'yes' === $autoplay_option ) ? 'autoplay' : ''; ?>>
+					<amp-vimeo width="<?php echo esc_attr( $attr['width'] ); ?>" height="<?php echo esc_attr( $attr['height'] ); ?>" layout="fill" data-videoid="<?php echo esc_attr( $attr['videoid'] ); ?>" <?php echo ( ! empty( $autoplay_option ) && 'yes' === $autoplay_option ) ? 'autoplay' : ''; // phpcs:ignore SlevomatCodingStandard.PHP.UselessParentheses.UselessParentheses ?>>
 					</amp-vimeo>
 				</div>
 			</amp-lightbox>

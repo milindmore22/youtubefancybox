@@ -53,6 +53,7 @@ trait Singleton {
 		_doing_it_wrong(
 			__FUNCTION__,
 			sprintf(
+				/* translators: %s: Class name. */
 				esc_html__( 'The %s class should not be cloned.', 'youtubefancybox' ),
 				esc_html( static::class ),
 			),
@@ -67,6 +68,7 @@ trait Singleton {
 		_doing_it_wrong(
 			__FUNCTION__,
 			sprintf(
+				/* translators: %s: Class name. */
 				esc_html__( 'De-serializing instances of %s is not allowed.', 'youtubefancybox' ),
 				esc_html( static::class ),
 			),

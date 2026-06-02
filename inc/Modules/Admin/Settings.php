@@ -27,7 +27,7 @@ class Settings implements Registrable {
 	 * Register WordPress hooks.
 	 */
 	public function register_hooks(): void {
-		add_action( 'admin_menu', array( $this, 'add_admin_menu' ) );
+		add_action( 'admin_menu', [ $this, 'add_admin_menu' ] );
 	}
 
 	/**
@@ -39,7 +39,7 @@ class Settings implements Registrable {
 			'Video Lightbox',
 			'manage_options',
 			'ytubefancybox',
-			array( $this, 'render_settings_page' ),
+			[ $this, 'render_settings_page' ],
 			'dashicons-format-video',
 			6
 		);
@@ -50,10 +50,10 @@ class Settings implements Registrable {
 	 */
 	public function render_settings_page(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have sufficient permissions to access this page.' ) );
+			wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'youtubefancybox' ) );
 		}
 
-		if ( 'POST' === filter_input( INPUT_SERVER, 'REQUEST_METHOD' ) ) {
+		if ( 'POST' === filter_input( INPUT_SERVER, 'REQUEST_METHOD', FILTER_SANITIZE_FULL_SPECIAL_CHARS ) ) {
 			$this->save_settings();
 		}
 
@@ -64,14 +64,14 @@ class Settings implements Registrable {
 	 * Save the default settings.
 	 */
 	private function save_settings(): void {
-		$fields = array(
+		$fields = [
 			'youtube_height',
 			'youtube_width',
 			'autoplay',
-		);
+		];
 
 		foreach ( $fields as $field ) {
-			$value = filter_input( INPUT_POST, $field );
+			$value = filter_input( INPUT_POST, $field, FILTER_SANITIZE_FULL_SPECIAL_CHARS );
 			if ( get_option( $field ) ) {
 				update_option( $field, $value );
 			} else {
