@@ -1,7 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
 /**
  * Plugin Name: Video Lightbox for YouTube/Vimeo
  * Plugin URI: https://wordpress.org/plugins/youtubefancybox/
