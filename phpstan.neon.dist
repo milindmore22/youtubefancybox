@@ -20,7 +20,7 @@ parameters:
 		bootstrapFiles:
 				- youtubefancybox.php
 
-	paths:
+		paths:
 			- youtubefancybox.php
 			- inc/
 
