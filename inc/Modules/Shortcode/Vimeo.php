@@ -144,8 +144,9 @@ class Vimeo implements Registrable {
 
 		if ( empty( $attr['videoid'] ) && ! empty( $attr['url'] ) ) {
 			$matches = [];
-			preg_match( "#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $attr['url'], $matches );
-			$attr['videoid'] = $matches[0] ?? '';
+			if ( preg_match( '#(?:https?://)?(?:www\.|player\.)?vimeo\.com/(?:channels/(?:\w+/)?|groups/[^/]+/videos/|album/(?:\d+/)?video/|video/|)(\d+)#i', $attr['url'], $matches ) ) {
+				$attr['videoid'] = $matches[1];
+			}
 		}
 
 		$autoplay_option = get_option( 'autoplay' );

@@ -6,132 +6,88 @@ Requires PHP: 8.1
 Tested up to: 7.0
 Stable tag: 2.7.1
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Display YouTube/Vimeo thumbnails that open in a lightbox popup. Easy shortcode generator with custom height, width & autoplay.
+Display YouTube and Vimeo thumbnails that open in a sleek lightbox popup with custom sizes, autoplay, and official AMP support.
 
 == Description ==
 
-Easy YouTube & Vimeo popups! Click thumbnails to watch videos in a sleek lightbox. Works with shortcodes in posts, pages & widgets.
+**Video Lightbox for YouTube/Vimeo** lets you display responsive YouTube and Vimeo video thumbnails on your WordPress posts, pages, and widgets. When a visitor clicks the thumbnail, the video opens in an elegant, responsive Colorbox popup overlay.
 
-The plugin now has support for the official AMP plugin.
+### Features
+* **YouTube & Vimeo Support**: Embed any public YouTube video/shorts or Vimeo video with a clean shortcode.
+* **Responsive Lightbox**: Seamless video overlay powered by Colorbox.
+* **Modern Admin Interface**: Configure default thumbnail width, height, and autoplay behavior with a streamlined admin settings panel.
+* **Built-in Shortcode Generator**: Quickly generate customized `[youtube]` and `[vimeo]` shortcodes directly from your WordPress dashboard.
+* **Official AMP Support**: Automatically renders valid AMP lightbox components (`amp-lightbox`, `amp-youtube`, `amp-vimeo`) on AMP endpoints.
+* **High Performance**: Assets are loaded only on pages where required.
 
-[markdown syntax]: Eg:
-    `&#91;youtube videoid="<youtube videoid goes here>" height="<height goes here>" width="<width goes here>"&#93;`
-    `&#91;youtube url="<youtube url goes here>"&#93;`
+### Shortcode Examples
 
-in the backend you can generate shortcodes also you can set default height, width, and an option to play video automatically.
+**YouTube:**
+`[youtube url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"]`
+`[youtube videoid="dQw4w9WgXcQ" width="400" height="350"]`
 
-Now Supports Vimeo
-
-[markdown syntax]: Eg:
-    `&#91;vimeo videoid="<vimeo videoid goes here>" height="<height goes here>" width="<width goes here>"&#93;`
-    `&#91;vimeo url="<vimeo url goes here>"&#93;`
-
+**Vimeo:**
+`[vimeo url="https://vimeo.com/76979871"]`
+`[vimeo videoid="76979871" width="400" height="350"]`
 
 == Installation ==
 
-1. Upload `youtubefancybox` folder to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Place shortcode like`&#91;youtube videoid="<videoid goes here>"&#93;` in your page, post, text widget
+1. Upload the `youtubefancybox` folder to your `/wp-content/plugins/` directory (or search for **Video Lightbox for YouTube/Vimeo** via **Plugins > Add New**).
+2. Activate the plugin through the **Plugins** screen in WordPress.
+3. Configure your default dimensions and autoplay settings under **Video Lightbox** in your admin menu.
+4. Insert `[youtube]` or `[vimeo]` shortcodes into any post, page, or widget.
 
 == Frequently Asked Questions ==
 
-= I have installed the plugin but nothing happens? =
-You need to add [shortcode](http://codex.wordpress.org/Shortcode) to your page, post, or your text widget
-= Does this plugin has backend =
-Yes, It does it's in the plugin submenu named "YTubeFancyBox".
-= I need to set default height and width =
-You can set the default height and width on the admin side
-= I don't want to play video after lightbox opens =
-You can set the default autoplay option at the backend
-= I need to set different height and width for each Youtube thumbnail =
-You can set height and width for each image thumbnail in shorcode `&#91;youtube videoid="<videoid>" height="<height>" width="<width>"&#93;`
-= Where can I get youtube video id =
-You can find youtube video id at the backend by inserting youtube video URL
-= Can I use youtube video URL instead of video id =
-Yes, you can add `&#91;youtube url="<youtube video URL here>"&#93;`
+= How do I use the plugin after activating it? =
+Insert a shortcode into your content. For example:
+`[youtube url="https://www.youtube.com/watch?v=VIDEO_ID"]` or `[vimeo url="https://vimeo.com/VIDEO_ID"]`.
+
+= How do I configure default dimensions or autoplay? =
+Go to **Video Lightbox** in the WordPress admin menu to configure your default height, width, and autoplay preference.
+
+= Can I override the default dimensions on a specific shortcode? =
+Yes. Pass `height` and `width` attributes directly in the shortcode:
+`[youtube videoid="VIDEO_ID" width="600" height="400"]`
+
+= Does this plugin support official AMP? =
+Yes. When viewing content on an AMP-enabled request, the plugin automatically outputs native `<amp-lightbox>`, `<amp-youtube>`, and `<amp-vimeo>` markup without loading jQuery.
+
+= How do I generate shortcodes quickly? =
+Navigate to **Video Lightbox > Youtube** or **Video Lightbox > Vimeo** in your WordPress dashboard, enter your video URL and dimensions, and click **Generate Shortcode**.
 
 == Screenshots ==
 
-1. Backend of Plugin
-2. add the shortcode on a page
-3. Thumbnails generated from youtube video
-4. Youtube Video in Lightbox
+1. Default Settings page for video lightbox dimensions and autoplay.
+2. YouTube Shortcode Generator.
+3. Vimeo Shortcode Generator.
+4. Video Lightbox popup playing a video on the frontend.
 
 == Changelog ==
 
 = 2.7.1 =
-Version update
+* Modernized admin settings and shortcode generator interfaces.
+* Optimized JavaScript and modularized admin stylesheet loading.
+* Updated compatibility for modern WordPress and PHP standards.
 
 = 2.7.0 =
-Fix : Fixed error where the vimeo data was not reetrieved.
-Updated Tested tag to 6.6.2
+* Fixed Vimeo data retrieval issue.
+* Updated compatibility tested tag.
 
 = 2.6.2 =
-Fix: short code Generator.
-Updated Tested Tag to 5.8
+* Fixed shortcode generator URL parsing.
 
 = 2.6.1 =
-Renamed plugin and updated logo to avoid copyright violations.
+* Renamed plugin and updated assets for WordPress.org compliance.
 
-= 2.6 =
-Added Official AMP Plugin Support.
-Tested up to 5.6
+= 2.6.0 =
+* Added official AMP plugin support with native AMP lightbox components.
 
-= 2.5 =
+= 2.0.0 =
+* Added support for Vimeo videos and shortcode generation.
+* Updated Colorbox script.
 
-Tested up to 5.4.2
-
-= 2.4 =
-
-Fixes warning.
-
-= 2.3 =
-
-Fixed issue with directly redirecting to video.
-Added Extended version of colorboxjs
-
-= 2.2 =
-
-Added muted autoplay for Chrome and Safari.
-https://developers.google.com/web/updates/2017/09/autoplay-policy-changes
-
-= 2.1 =
-
-Fixes Widget text minor issue.
-
-= 2.0 =
-
-Updated colorboxjs
-
-Now supports Vimeo.
-
-= 1.6 =
-
-Updated colorboxjs
-
-Updated for WordPress 4.0
-
-Now supports SSL (HTTPS)
-
-Improved look and feel
-
-Updated text domain to be the same as a slug
-
-Updated code to make plugin translation ready, the latest version of colorboxjs updated.
-
-Fixed shortcode inside shortcode bug with return output
-
-Updated for WordPress 4.1
-
-Fixed iPhone iPad bugs
-
-= 1.0 =
-
-First release. Compatible with IE9,IE10, Chrome, Firefox
-
-
-== Upgrade notice ==
-
-Fix: short code Generator.
+= 1.0.0 =
+* Initial release.

@@ -23,9 +23,9 @@ function youtube_parser( url ) {
  * @return {string|void} Vimeo video ID.
  */
 function vimeo_parser( url ) {
-	const match = url.match( /^.*(www\.)?vimeo.com\/(\d+)($|\/)/ );
-	if ( match ) {
-		return match[ 2 ];
+	const match = url.match( /(?:https?:\/\/)?(?:www\.|player\.)?vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/[^/]+\/videos\/|album\/(?:\d+\/)?video\/|video\/|)(\d+)/i );
+	if ( match && match[ 1 ] ) {
+		return match[ 1 ];
 	}
 	alert( fancybox_admin_obj.viemo_alert ); // eslint-disable-line no-alert
 }
