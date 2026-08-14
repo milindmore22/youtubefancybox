@@ -1,0 +1,247 @@
+/**
+ * Admin Settings styles.
+ *
+ * @package YTubeFancy
+ */
+
+.ytubefancybox-settings {
+	--ytf-surface: #fff;
+	--ytf-surface-subtle: #f6f7f7;
+	--ytf-border: #dcdcde;
+	--ytf-border-hover: #8c8f94;
+	--ytf-text: #1d2327;
+	--ytf-text-muted: #646970;
+	--ytf-danger: #d63638;
+	--ytf-accent: var(--wp-admin-theme-color, #2271b1);
+	--ytf-accent-hover: #135e96;
+	--ytf-focus-ring: rgba(34, 113, 177, 0.25);
+	--ytf-radius-sm: 6px;
+	--ytf-radius-md: 8px;
+	--ytf-radius-lg: 12px;
+	--ytf-transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+	accent-color: var(--ytf-accent);
+}
+
+.ytubefancybox-settings h1 {
+	font-size: clamp(1.4rem, 1.2rem + 1vw, 1.75rem);
+	font-weight: 600;
+	letter-spacing: -0.015em;
+	margin-block-end: 1rem;
+	text-wrap: balance;
+}
+
+.ytubefancybox-settings-card {
+	max-inline-size: 740px;
+	margin-block-start: 1rem;
+	padding: clamp(1.25rem, 2vw + 0.75rem, 2rem);
+	background: var(--ytf-surface);
+	color: var(--ytf-text);
+	border: 1px solid var(--ytf-border);
+	border-radius: var(--ytf-radius-lg);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+	transition: border-color var(--ytf-transition), box-shadow var(--ytf-transition);
+}
+
+.ytubefancybox-settings-card h2 {
+	margin-block-start: 0;
+	margin-block-end: 1.25rem;
+	font-size: 1.15rem;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	color: var(--ytf-text);
+	text-wrap: balance;
+	padding-block-end: 0.75rem;
+	border-block-end: 1px solid var(--ytf-border);
+}
+
+.ytubefancybox-settings-card .form-table {
+	margin-top: 0;
+}
+
+.ytubefancybox-settings-card .form-table tr {
+	border-block-end: 1px solid color-mix(in oklab, var(--ytf-border), transparent 50%);
+	transition: background-color var(--ytf-transition);
+}
+
+.ytubefancybox-settings-card .form-table tr:last-child {
+	border-block-end: none;
+}
+
+.ytubefancybox-settings-card .form-table th {
+	padding: 1.2rem 1rem 1.2rem 0;
+	vertical-align: top;
+	color: var(--ytf-text);
+	font-weight: 600;
+}
+
+.ytubefancybox-settings-card .form-table td {
+	padding: 1.2rem 0;
+}
+
+.ytubefancybox-settings-card .description {
+	color: var(--ytf-text-muted);
+	font-size: 0.85rem;
+	line-height: 1.45;
+	margin-top: 6px;
+	text-wrap: pretty;
+}
+
+.ytubefancybox-segmented {
+	display: inline-grid;
+	grid-auto-flow: column;
+	grid-auto-columns: 1fr;
+	padding: 3px;
+	margin: 0;
+	background: #eef0f2;
+	border: 1px solid #d0d4d9;
+	border-radius: var(--ytf-radius-md);
+	gap: 2px;
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+	transition: border-color var(--ytf-transition);
+}
+
+.ytubefancybox-segmented__input {
+	position: absolute;
+	inset: 0;
+	margin: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.ytubefancybox-segmented__item {
+	position: relative;
+	display: inline-flex !important; /* stylelint-disable-line declaration-no-important */
+	align-items: center;
+	justify-content: center;
+	min-block-size: 34px;
+	min-inline-size: 72px;
+	padding: 0 1.25rem;
+	margin: 0 !important;
+	border-radius: calc(var(--ytf-radius-md) - 3px);
+	font-size: 0.875rem;
+	font-weight: 500;
+	line-height: 1;
+	text-align: center;
+	color: #50575e;
+	cursor: pointer;
+	user-select: none;
+	transition: background-color var(--ytf-transition), color var(--ytf-transition), box-shadow var(--ytf-transition);
+}
+
+.ytubefancybox-segmented__label {
+	display: inline-block;
+	text-align: center;
+	line-height: 1;
+	margin: 0;
+	padding: 0;
+}
+
+.ytubefancybox-segmented__item:has(.ytubefancybox-segmented__input:focus-visible) {
+	outline: 2px solid var(--ytf-accent);
+	outline-offset: 2px;
+}
+
+.ytubefancybox-segmented__item:has(.ytubefancybox-segmented__input:checked) {
+	background: var(--ytf-accent);
+	color: #fff;
+	font-weight: 600;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.ytubefancybox-segmented__item:hover:not(:has(.ytubefancybox-segmented__input:checked)) {
+	background: rgba(255, 255, 255, 0.5);
+	color: #1d2327;
+}
+
+.ytubefancybox-settings-card .form-table input[type="number"],
+.ytubefancybox-settings-card .form-table input[type="url"],
+.ytubefancybox-settings-card .form-table input[type="text"] {
+	min-block-size: 36px;
+	padding: 6px 12px;
+	background: var(--ytf-surface);
+	color: var(--ytf-text);
+	border: 1px solid var(--ytf-border);
+	border-radius: var(--ytf-radius-sm);
+	font-size: 0.95rem;
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+	transition: border-color var(--ytf-transition), box-shadow var(--ytf-transition), background-color var(--ytf-transition);
+}
+
+.ytubefancybox-settings-card .form-table input[type="number"] {
+	width: 14ch;
+}
+
+.ytubefancybox-settings-card .form-table input.regular-text {
+	max-width: 100%;
+	width: 32rem;
+}
+
+.ytubefancybox-settings-card .form-table input[type="number"]:hover,
+.ytubefancybox-settings-card .form-table input[type="url"]:hover,
+.ytubefancybox-settings-card .form-table input[type="text"]:hover {
+	border-color: var(--ytf-border-hover);
+}
+
+.ytubefancybox-settings-card .form-table input[type="number"]:focus,
+.ytubefancybox-settings-card .form-table input[type="url"]:focus,
+.ytubefancybox-settings-card .form-table input[type="text"]:focus {
+	border-color: var(--ytf-accent);
+	box-shadow: 0 0 0 2px var(--ytf-focus-ring);
+	background: var(--ytf-surface);
+	outline: none;
+}
+
+.ytubefancybox-settings-card .form-table input[type="number"]:invalid,
+.ytubefancybox-settings-card .form-table input[type="number"]:user-invalid,
+.ytubefancybox-settings-card .form-table input[type="url"]:invalid,
+.ytubefancybox-settings-card .form-table input[type="url"]:user-invalid {
+	border-color: var(--ytf-danger);
+	box-shadow: 0 0 0 2px color-mix(in oklab, var(--ytf-danger), transparent 80%);
+}
+
+.ytubefancybox-settings-card .form-table input:focus-visible {
+	outline: 2px solid var(--ytf-accent);
+	outline-offset: 1px;
+}
+
+.ytubefancybox-settings-card .form-table input.ytubefancybox-shortcode-output {
+	background: var(--ytf-surface-subtle);
+	font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+	font-size: 0.9rem;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.ytubefancybox-settings-card .form-table input.ytubefancybox-shortcode-output:hover {
+	border-color: var(--ytf-accent);
+}
+
+.ytubefancybox-settings-card .button-primary {
+	min-block-size: 36px;
+	padding: 0 20px;
+	border-radius: var(--ytf-radius-sm);
+	font-weight: 500;
+	transition: transform var(--ytf-transition), box-shadow var(--ytf-transition);
+}
+
+.ytubefancybox-settings-card .button-primary:hover {
+	transform: translateY(-1px);
+}
+
+.ytubefancybox-settings-card .button-primary:active {
+	transform: translateY(0);
+}
+
+.ytubefancybox-settings-card .submit {
+	margin-block-start: 1.5rem;
+	padding-block-start: 1rem;
+	border-block-start: 1px solid var(--ytf-border);
+}
+
+@media (forced-colors: active) {
+
+	.ytubefancybox-segmented__item:has(.ytubefancybox-segmented__input:checked) {
+		outline: 2px solid CanvasText;
+		outline-offset: -2px;
+	}
+}

@@ -2,81 +2,14 @@
  * Admin Scripts for Video Lightbox.
  */
 
-jQuery( document ).ready( function( $ ) {
-	/**
-	 * Generate shortcode for Video Lightbox
-	 */
-	$( document ).on( 'click', '#genrate', function() {
-		const url = $( '#youtubeurl' ).val();
-		const height = $( '#t_height' ).val();
-		const width = $( '#t_width' ).val();
-		let str = '';
-		let videoid = '';
-
-		if ( url ) {
-			videoid = youtube_parser( url );
-			str = '[youtube videoid="' + videoid + '"';
-
-			if ( height ) {
-				str += ' height="' + height + '"';
-			}
-			if ( width ) {
-				str += ' width="' + width + '"';
-			}
-			str += ']';
-		}
-		if ( videoid ) {
-			$( '#shortcode' ).val( str );
-			$( '#shortcode' ).trigger( 'select' );
-		}
-	} );
-
-	/**
-	 * Select Shortcode on click
-	 */
-	$( document ).on( 'click', '#shortcode', function() {
-		$( '#shortcode' ).trigger( 'select' );
-	} );
-
-	/**
-	 * Generate shortcode for Vimeo videos
-	 */
-	$( document ).on( 'click', '#genratevimeo', function() {
-		const url = $( '#vimeourl' ).val();
-		const height = $( '#t_height' ).val();
-		const width = $( '#t_width' ).val();
-		let str = '';
-		let videoid = '';
-
-		if ( url ) {
-			videoid = vimeo_parser( url );
-			str = '[vimeo videoid="' + videoid + '"';
-
-			if ( height ) {
-				str += ' height="' + height + '"';
-			}
-			if ( width ) {
-				str += ' width="' + width + '"';
-			}
-			str += ']';
-		}
-		if ( videoid ) {
-			$( '#shortcode' ).val( str );
-			$( '#shortcode' ).trigger( 'select' );
-		}
-	} );
-} );
-
 /**
- * Gets YouTube ID from URL.
+ * Extracts YouTube video ID from URL.
  *
  * @param {string} url YouTube URL.
  * @return {string|void} YouTube video ID.
  */
-/* eslint-disable-next-line no-unused-vars */
 function youtube_parser( url ) {
-	const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&?]*).*/;
-	const match = url.match( regExp );
+	const match = url.match( /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/ );
 	if ( match && match[ 7 ].length === 11 ) {
 		return match[ 7 ];
 	}
@@ -84,17 +17,84 @@ function youtube_parser( url ) {
 }
 
 /**
- * Gets Vimeo ID from URL.
+ * Extracts Vimeo video ID from URL.
  *
  * @param {string} url Vimeo URL.
  * @return {string|void} Vimeo video ID.
  */
-/* eslint-disable-next-line no-unused-vars */
 function vimeo_parser( url ) {
-	const regExp = /^.*(www\.)?vimeo.com\/(\d+)($|\/)/;
-	const match = url.match( regExp );
+	const match = url.match( /^.*(www\.)?vimeo.com\/(\d+)($|\/)/ );
 	if ( match ) {
 		return match[ 2 ];
 	}
 	alert( fancybox_admin_obj.viemo_alert ); // eslint-disable-line no-alert
 }
+
+jQuery( function( $ ) {
+	/**
+	 * Build shortcode string from video parameters.
+	 *
+	 * @param {string} tag     Shortcode tag (youtube or vimeo).
+	 * @param {string} videoid Video ID.
+	 * @param {string} height  Thumbnail height.
+	 * @param {string} width   Thumbnail width.
+	 * @return {string} Generated shortcode.
+	 */
+	function buildShortcode( tag, videoid, height, width ) {
+		let shortcode = `[${ tag } videoid="${ videoid }"`;
+		if ( height ) {
+			shortcode += ` height="${ height }"`;
+		}
+		if ( width ) {
+			shortcode += ` width="${ width }"`;
+		}
+		shortcode += ']';
+		return shortcode;
+	}
+
+	/**
+	 * Generate shortcode for YouTube videos.
+	 */
+	$( document ).on( 'click', '#genrate', function() {
+		const url = $( '#youtubeurl' ).val().trim();
+		if ( ! url ) {
+			return;
+		}
+
+		const videoid = youtube_parser( url );
+		if ( videoid ) {
+			const height = $( '#t_height' ).val().trim();
+			const width = $( '#t_width' ).val().trim();
+			$( '#shortcode' )
+				.val( buildShortcode( 'youtube', videoid, height, width ) )
+				.trigger( 'select' );
+		}
+	} );
+
+	/**
+	 * Generate shortcode for Vimeo videos.
+	 */
+	$( document ).on( 'click', '#genratevimeo', function() {
+		const url = $( '#vimeourl' ).val().trim();
+		if ( ! url ) {
+			return;
+		}
+
+		const videoid = vimeo_parser( url );
+		if ( videoid ) {
+			const height = $( '#t_height' ).val().trim();
+			const width = $( '#t_width' ).val().trim();
+			$( '#shortcode' )
+				.val( buildShortcode( 'vimeo', videoid, height, width ) )
+				.trigger( 'select' );
+		}
+	} );
+
+	/**
+	 * Select Shortcode on click.
+	 */
+	$( document ).on( 'click', '#shortcode', function() {
+		$( this ).trigger( 'select' );
+	} );
+} );
+

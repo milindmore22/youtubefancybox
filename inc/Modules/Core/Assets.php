@@ -75,6 +75,15 @@ class Assets implements Registrable {
 			]
 		);
 
+		$style_asset = $this->get_asset( 'build/css/admin.asset.php' );
+
+		wp_enqueue_style(
+			'ytubefancybox-admin',
+			YTUBE_FANCY_URL . 'build/css/admin.css',
+			$style_asset['dependencies'],
+			$style_asset['version']
+		);
+
 		wp_enqueue_script( 'fancybox_admin' );
 	}
 
