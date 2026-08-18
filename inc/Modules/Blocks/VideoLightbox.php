@@ -151,6 +151,21 @@ class VideoLightbox implements Registrable {
 	}
 
 	/**
+	 * Get the default provider thumbnail URL.
+	 *
+	 * @param string $provider  Video provider ('youtube' or 'vimeo').
+	 * @param string $video_id  Video ID.
+	 * @return string Thumbnail URL, or an empty string when no thumbnail is available.
+	 */
+	public static function get_default_thumbnail_src( string $provider, string $video_id ): string {
+		if ( 'vimeo' === $provider ) {
+			return self::get_vimeo_thumbnail( $video_id );
+		}
+
+		return 'https://img.youtube.com/vi/' . rawurlencode( $video_id ) . '/hqdefault.jpg';
+	}
+
+	/**
 	 * Render the default provider thumbnail as an `<img>` tag.
 	 *
 	 * @param string $provider  Video provider ('youtube' or 'vimeo').
@@ -160,13 +175,7 @@ class VideoLightbox implements Registrable {
 	 * @return string `<img>` tag, or an empty string when no thumbnail is available.
 	 */
 	public static function get_default_thumbnail( string $provider, string $video_id, int $width, int $height ): string {
-		$thumbnail_url = '';
-
-		if ( 'vimeo' === $provider ) {
-			$thumbnail_url = self::get_vimeo_thumbnail( $video_id );
-		} else {
-			$thumbnail_url = 'https://img.youtube.com/vi/' . rawurlencode( $video_id ) . '/hqdefault.jpg';
-		}
+		$thumbnail_url = self::get_default_thumbnail_src( $provider, $video_id );
 
 		if ( '' === $thumbnail_url ) {
 			return '';

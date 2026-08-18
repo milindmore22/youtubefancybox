@@ -82,17 +82,60 @@ if ( '' === $thumbnail ) {
 	return '';
 }
 
-$embed_url = VideoLightbox::get_embed_url( $provider, $video_id, $autoplay );
-
-/* translators: %s: Video provider name. */
-$aria_label = sprintf( esc_html__( 'Play %s video', 'youtubefancybox' ), $provider );
-
 $play_icon = '<span class="youtubefancybox-block__play" aria-hidden="true">'
 	. '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" focusable="false">'
 	. '<circle cx="32" cy="32" r="32" fill="rgba(0, 0, 0, 0.6)"></circle>'
 	. '<path d="M26 20l18 12-18 12z" fill="#fff"></path>'
 	. '</svg>'
 	. '</span>';
+
+if ( function_exists( 'amp_is_request' ) && amp_is_request() ) {
+	$light_box_id = wp_unique_id( 'youtubefancybox-block-lightbox-' );
+	$player_tag   = 'vimeo' === $provider ? 'amp-vimeo' : 'amp-youtube';
+	$amp_src      = '';
+
+	if ( ! empty( $attributes['thumbnailId'] ) ) {
+		$image_data = wp_get_attachment_image_src( (int) $attributes['thumbnailId'], 'full' );
+		$amp_src    = $image_data[0] ?? '';
+	} elseif ( ! empty( $attributes['thumbnailUrl'] ) ) {
+		$amp_src = (string) $attributes['thumbnailUrl'];
+	}
+
+	if ( '' === $amp_src ) {
+		$amp_src = VideoLightbox::get_default_thumbnail_src( $provider, $video_id );
+	}
+
+	if ( '' === $amp_src ) {
+		return '';
+	}
+
+	$amp_alt = (string) $attributes['thumbnailAlt'];
+
+	if ( '' === $amp_alt ) {
+		$amp_alt = __( 'Video thumbnail', 'youtubefancybox' );
+	}
+	?>
+	<div <?php echo get_block_wrapper_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+		<amp-lightbox class="ytfancybox-lightbox alignfull" id="<?php echo esc_attr( $light_box_id ); ?>" layout="nodisplay">
+			<div class="youtubefancybox-amp-lightbox" role="button" tabindex="0">
+				<span role="button" tabindex="0" on="tap:<?php echo esc_attr( $light_box_id ); ?>.close" class="youtubefancybox-amp-lightbox-close">X</span>
+				<<?php echo esc_html( $player_tag ); ?> width="<?php echo esc_attr( (string) $width ); ?>" height="<?php echo esc_attr( (string) $height ); ?>" layout="fill" data-videoid="<?php echo esc_attr( $video_id ); ?>" <?php echo $autoplay ? 'autoplay' : ''; ?>>
+				</<?php echo esc_html( $player_tag ); ?>>
+			</div>
+		</amp-lightbox>
+		<span class="youtubefancybox-block__trigger" role="button" tabindex="0" on="tap:<?php echo esc_attr( $light_box_id ); ?>">
+			<amp-img src="<?php echo esc_url( $amp_src ); ?>" alt="<?php echo esc_attr( $amp_alt ); ?>" width="<?php echo esc_attr( (string) $width ); ?>" height="<?php echo esc_attr( (string) $height ); ?>" layout="intrinsic"></amp-img>
+			<?php echo $play_icon; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		</span>
+	</div>
+	<?php
+	return;
+}
+
+$embed_url = VideoLightbox::get_embed_url( $provider, $video_id, $autoplay );
+
+/* translators: %s: Video provider name. */
+$aria_label = sprintf( esc_html__( 'Play %s video', 'youtubefancybox' ), $provider );
 ?>
 <div <?php echo get_block_wrapper_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 	<a

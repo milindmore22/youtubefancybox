@@ -15,7 +15,8 @@
 	text-decoration: none;
 }
 
-.youtubefancybox-block__trigger img {
+.youtubefancybox-block__trigger img,
+.youtubefancybox-block__trigger amp-img {
 	display: block;
 	height: auto;
 	max-width: 100%;
