@@ -1,0 +1,53 @@
+/**
+ * Video Lightbox for YouTube/Vimeo block — frontend styles.
+ */
+
+.youtubefancybox-block {
+	position: relative;
+	max-width: 100%;
+}
+
+.youtubefancybox-block__trigger {
+	position: relative;
+	display: inline-block;
+	max-width: 100%;
+	line-height: 0;
+	text-decoration: none;
+}
+
+.youtubefancybox-block__trigger img {
+	display: block;
+	height: auto;
+	max-width: 100%;
+}
+
+.youtubefancybox-block__play {
+	position: absolute;
+	inset: 0;
+	display: grid;
+	place-items: center;
+	line-height: normal;
+}
+
+.youtubefancybox-block__play svg {
+	width: 64px;
+	height: 64px;
+	transition: transform 0.2s ease;
+}
+
+.youtubefancybox-block__trigger:hover .youtubefancybox-block__play svg,
+.youtubefancybox-block__trigger:focus-visible .youtubefancybox-block__play svg {
+	transform: scale(1.08);
+}
+
+.youtubefancybox-block__trigger:focus-visible {
+	outline: 2px solid currentcolor;
+	outline-offset: 2px;
+}
+
+@media ( prefers-reduced-motion: reduce ) {
+
+	.youtubefancybox-block__play svg {
+		transition: none;
+	}
+}

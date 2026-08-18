@@ -1,0 +1,73 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "youtubefancybox/video-lightbox",
+	"version": "2.7.1",
+	"title": "Video Lightbox for YouTube/Vimeo",
+	"category": "media",
+	"icon": "format-video",
+	"description": "Add a YouTube or Vimeo video that opens in a lightbox when the thumbnail is clicked.",
+	"keywords": [
+		"youtube",
+		"vimeo",
+		"video",
+		"lightbox",
+		"popup"
+	],
+	"textdomain": "youtubefancybox",
+	"supports": {
+		"html": false,
+		"align": true,
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	},
+	"attributes": {
+		"videoUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"videoId": {
+			"type": "string",
+			"default": ""
+		},
+		"provider": {
+			"type": "string",
+			"enum": [
+				"",
+				"youtube",
+				"vimeo"
+			],
+			"default": ""
+		},
+		"thumbnailId": {
+			"type": "number",
+			"default": 0
+		},
+		"thumbnailUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"thumbnailAlt": {
+			"type": "string",
+			"default": ""
+		},
+		"height": {
+			"type": "number",
+			"default": 350
+		},
+		"width": {
+			"type": "number",
+			"default": 400
+		},
+		"autoplay": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"editorScript": "file:../../../build/blocks/video-lightbox.js",
+	"editorStyle": "file:../../../build/css/blocks-video-lightbox-editor.css",
+	"style": "file:../../../build/css/blocks-video-lightbox.css",
+	"render": "file:./render.php"
+}
