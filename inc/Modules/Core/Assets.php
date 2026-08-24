@@ -2,7 +2,7 @@
 /**
  * Assets module.
  *
- * Handles enqueuing of styles and scripts for admin and frontend.
+ * Handles enqueuing of styles and scripts for the frontend.
  *
  * @package YTubeFancy\Modules\Core
  */
@@ -29,62 +29,9 @@ class Assets implements Registrable {
 	 * Register WordPress hooks.
 	 */
 	public function register_hooks(): void {
-		if ( is_admin() ) {
-			add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_assets' ] );
-		}
-
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_frontend_assets' ] );
 		add_filter( 'widget_text', 'shortcode_unautop' );
 		add_filter( 'widget_text', 'do_shortcode' );
-	}
-
-	/**
-	 * Enqueue admin scripts on plugin-specific admin screens.
-	 *
-	 * @param string $hook The current admin page hook suffix.
-	 */
-	public function enqueue_admin_assets( string $hook ): void {
-		$admin_screens = [
-			'video-lightbox_page_vimeo',
-			'video-lightbox_page_ytube',
-			'toplevel_page_ytubefancybox',
-		];
-
-		if ( ! in_array( $hook, $admin_screens, true ) ) {
-			return;
-		}
-
-		wp_enqueue_script( 'jquery' );
-
-		$asset = $this->get_asset( 'build/js/fancybox_admin.asset.php' );
-
-		wp_register_script(
-			'fancybox_admin',
-			YTUBE_FANCY_URL . 'build/js/fancybox_admin.js',
-			$asset['dependencies'],
-			$asset['version'],
-			true
-		);
-
-		wp_localize_script(
-			'fancybox_admin',
-			'fancybox_admin_obj',
-			[
-				'youtube_alert' => esc_html__( 'Youtube URL you entered might be wrong, Please enter correct URL!', 'youtubefancybox' ),
-				'viemo_alert'   => esc_html__( 'Viemo URL you entered might be wrong, Please enter correct URL!', 'youtubefancybox' ),
-			]
-		);
-
-		$style_asset = $this->get_asset( 'build/css/admin.asset.php' );
-
-		wp_enqueue_style(
-			'ytubefancybox-admin',
-			YTUBE_FANCY_URL . 'build/css/admin.css',
-			$style_asset['dependencies'],
-			$style_asset['version']
-		);
-
-		wp_enqueue_script( 'fancybox_admin' );
 	}
 
 	/**

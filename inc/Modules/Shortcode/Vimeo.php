@@ -18,8 +18,7 @@ use YTubeFancy\Contracts\Interfaces\Registrable;
 /**
  * Class Vimeo
  *
- * Registers the [vimeo] shortcode and the admin submenu page
- * for generating Vimeo shortcodes.
+ * Registers the [vimeo] shortcode.
  */
 class Vimeo implements Registrable {
 
@@ -27,93 +26,7 @@ class Vimeo implements Registrable {
 	 * Register WordPress hooks.
 	 */
 	public function register_hooks(): void {
-		if ( is_admin() ) {
-			add_action( 'admin_menu', [ $this, 'add_submenu_page' ] );
-		}
-
 		add_shortcode( 'vimeo', [ $this, 'render_shortcode' ] );
-	}
-
-	/**
-	 * Add the Vimeo submenu page.
-	 */
-	public function add_submenu_page(): void {
-		add_submenu_page(
-			'ytubefancybox',
-			'Vimeo FancyBox Options',
-			'Vimeo',
-			'manage_options',
-			'vimeo',
-			[ $this, 'render_options_page' ]
-		);
-	}
-
-	/**
-	 * Render the admin options page for generating Vimeo shortcodes.
-	 */
-	public function render_options_page(): void {
-		?>
-		<div class="wrap ytubefancybox-settings">
-			<h1><?php esc_html_e( 'Video Lightbox', 'youtubefancybox' ); ?></h1>
-			<div class="ytubefancybox-settings-card">
-				<h2><?php esc_html_e( 'Generate Vimeo Shortcode', 'youtubefancybox' ); ?></h2>
-				<table class="form-table" role="presentation">
-					<tr>
-						<th scope="row">
-							<label for="vimeourl"><?php esc_html_e( 'Enter Vimeo URL', 'youtubefancybox' ); ?></label>
-						</th>
-						<td>
-							<input type="url" name="vimeourl" id="vimeourl" class="regular-text" placeholder="https://vimeo.com/..." autocomplete="off" aria-describedby="vimeourl_description" />
-							<p class="description" id="vimeourl_description">
-								<?php esc_html_e( 'Paste a Vimeo video link.', 'youtubefancybox' ); ?>
-							</p>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">
-							<label for="t_height"><?php esc_html_e( 'Thumbnail Height', 'youtubefancybox' ); ?></label>
-						</th>
-						<td>
-							<input type="number" name="t_height" id="t_height" min="1" max="4096" step="1" autocomplete="off" placeholder="350" aria-describedby="t_height_description" />
-							<p class="description" id="t_height_description">
-								<?php esc_html_e( 'Height for the image thumbnail and lightbox.', 'youtubefancybox' ); ?>
-							</p>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">
-							<label for="t_width"><?php esc_html_e( 'Thumbnail Width', 'youtubefancybox' ); ?></label>
-						</th>
-						<td>
-							<input type="number" name="t_width" id="t_width" min="1" max="4096" step="1" autocomplete="off" placeholder="400" aria-describedby="t_width_description" />
-							<p class="description" id="t_width_description">
-								<?php esc_html_e( 'Width for the image thumbnail and lightbox.', 'youtubefancybox' ); ?>
-							</p>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row"></th>
-						<td>
-							<button type="button" name="getshortcode" id="genratevimeo" class="button button-primary">
-								<?php esc_html_e( 'Generate Shortcode', 'youtubefancybox' ); ?>
-							</button>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">
-							<label for="shortcode"><?php esc_html_e( 'Generated Shortcode', 'youtubefancybox' ); ?></label>
-						</th>
-						<td>
-							<input type="text" id="shortcode" class="regular-text ytubefancybox-shortcode-output" readonly="readonly" placeholder="<?php esc_attr_e( 'Generated shortcode will appear here...', 'youtubefancybox' ); ?>" />
-							<p class="description">
-								<?php esc_html_e( 'Click to select and copy this shortcode to your post or page.', 'youtubefancybox' ); ?>
-							</p>
-						</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-		<?php
 	}
 
 	/**
@@ -124,11 +37,11 @@ class Vimeo implements Registrable {
 	 */
 	public function render_shortcode( array $attr ): string {
 		if ( empty( $attr['height'] ) ) {
-			$attr['height'] = get_option( 'youtube_height' );
+			$attr['height'] = get_option( 'youtube_height', '350' );
 		}
 
 		if ( empty( $attr['width'] ) ) {
-			$attr['width'] = get_option( 'youtube_width' );
+			$attr['width'] = get_option( 'youtube_width', '400' );
 		}
 
 		$attr = shortcode_atts(

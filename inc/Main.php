@@ -32,7 +32,6 @@ final class Main {
 	 * @var class-string<\YTubeFancy\Contracts\Interfaces\Registrable>[]
 	 */
 	private const REGISTRABLE_CLASSES = [
-		Modules\Admin\Settings::class,
 		Modules\Blocks\VideoLightbox::class,
 		Modules\Shortcode\Youtube::class,
 		Modules\Shortcode\Vimeo::class,
