@@ -64,6 +64,11 @@ Navigate to **Media > Video Lightbox**, enter a YouTube or Vimeo video URL or ID
 = Can I use the block editor? =
 Yes. Add the **Video Lightbox for YouTube/Vimeo** block, then enter a public YouTube or Vimeo URL. You can choose a custom placeholder image, set dimensions, enable autoplay, and select a block style.
 
+== Source Code ==
+
+The source code is available on <a href="https://github.com/milindmore22/youtubefancybox">GitHub</a>.
+
+
 == Screenshots ==
 
 1. Video Lightbox block in the editor.
