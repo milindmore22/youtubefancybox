@@ -71,8 +71,9 @@ class Youtube implements Registrable {
 		}
 
 		$protocol    = is_ssl() ? 'https' : 'http';
-		$embed_url   = $protocol . '://www.youtube.com/embed/' . $attr['videoid'] . '?rel=0&' . $autoplay . '&wmode=transparent';
-		$embed_image = $protocol . '://img.youtube.com/vi/' . $attr['videoid'] . '/0.jpg';
+		$video_id    = rawurlencode( $attr['videoid'] );
+		$embed_url   = $protocol . '://www.youtube.com/embed/' . $video_id . '?rel=0&' . $autoplay . '&wmode=transparent';
+		$embed_image = $protocol . '://img.youtube.com/vi/' . $video_id . '/0.jpg';
 
 		ob_start();
 
