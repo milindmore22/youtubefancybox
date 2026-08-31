@@ -150,3 +150,43 @@ body.ytfancybox-style-cinema #cboxLoadingOverlay {
 	background-color: #000;
 	background-image: none;
 }
+
+/* ── Theme color style ──────────────────────────────────────────────────────
+   Colors are read at runtime from the block's own background-color support
+   (theme.json preset or custom pick) via the --ytfancybox-theme-color
+   variable set in caller.js, so this adapts to any active theme. */
+
+body.ytfancybox-style-theme #cboxOverlay {
+	background: var( --ytfancybox-theme-color, #1c1c1e );
+	background-image: none;
+	opacity: 0.92;
+	filter: none;
+}
+
+body.ytfancybox-style-theme #cboxContent,
+body.ytfancybox-style-theme .cboxIframe {
+	background: var( --ytfancybox-theme-color, #1c1c1e );
+}
+
+body.ytfancybox-style-theme #cboxTopCenter,
+body.ytfancybox-style-theme #cboxBottomCenter,
+body.ytfancybox-style-theme #cboxMiddleLeft,
+body.ytfancybox-style-theme #cboxMiddleRight,
+body.ytfancybox-style-theme #cboxTopLeft,
+body.ytfancybox-style-theme #cboxTopRight,
+body.ytfancybox-style-theme #cboxBottomLeft,
+body.ytfancybox-style-theme #cboxBottomRight {
+	background-image: none;
+	background-color: var( --ytfancybox-theme-color, #1c1c1e );
+}
+
+body.ytfancybox-style-theme #cboxPrevious,
+body.ytfancybox-style-theme #cboxNext,
+body.ytfancybox-style-theme #cboxClose {
+	filter: invert(1);
+}
+
+body.ytfancybox-style-theme #cboxLoadingOverlay {
+	background-color: var( --ytfancybox-theme-color, #1c1c1e );
+	background-image: none;
+}

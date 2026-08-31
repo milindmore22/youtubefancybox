@@ -3,6 +3,7 @@
  */
 .youtubefancybox-amp-lightbox {
 	background: #fff;
+
 	/* desktop default: 80vw wide, 16:9 height, centred */
 	width: 80vw;
 	height: calc( 80vw * 9 / 16 );
@@ -20,7 +21,9 @@
 }
 
 @media ( max-width: 600px ) {
+
 	.youtubefancybox-amp-lightbox {
+
 		/* on narrow screens fill nearly the full width */
 		width: 96vw;
 		height: calc( 96vw * 9 / 16 );

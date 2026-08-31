@@ -181,7 +181,7 @@ class VideoLightbox implements Registrable {
 			return '';
 		}
 
-		$size_attrs = ( $width > 0 && $height > 0 ) ? sprintf( ' width="%1$d" height="%2$d"', $width, $height ) : '';
+		$size_attrs = $width > 0 && $height > 0 ? sprintf( ' width="%1$d" height="%2$d"', $width, $height ) : '';
 
 		return sprintf(
 			'<img src="%1$s" alt="%2$s"%3$s loading="lazy" decoding="async" />',

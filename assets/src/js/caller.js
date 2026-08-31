@@ -4,12 +4,12 @@
 jQuery( function( $ ) {
 	// Returns width/height strings that keep 16:9 inside the viewport with gutters.
 	function responsiveDimensions() {
-		var vw = window.innerWidth;
-		var vh = window.innerHeight;
-		var gutterH = vw < 600 ? 0.96 : 0.88;
-		var gutterV = vw < 600 ? 0.90 : 0.85;
-		var w = Math.round( vw * gutterH );
-		var h = Math.round( w * ( 9 / 16 ) );
+		const vw = window.innerWidth;
+		const vh = window.innerHeight;
+		const gutterH = vw < 600 ? 0.96 : 0.88;
+		const gutterV = vw < 600 ? 0.90 : 0.85;
+		let w = Math.round( vw * gutterH );
+		let h = Math.round( w * ( 9 / 16 ) );
 		if ( h > vh * gutterV ) {
 			h = Math.round( vh * gutterV );
 			w = Math.round( h * ( 16 / 9 ) );
@@ -17,27 +17,31 @@ jQuery( function( $ ) {
 		return { width: w + 'px', height: h + 'px' };
 	}
 
-	var STYLE_CLASSES = [ 'ytfancybox-style-dark', 'ytfancybox-style-cinema' ];
+	const STYLE_CLASSES = [ 'ytfancybox-style-dark', 'ytfancybox-style-cinema' ];
 
 	$( '.youtube, .vimeo' ).colorbox( {
 		iframe: true,
 		// evaluated fresh on each open and window resize
-		width:  function() { return responsiveDimensions().width; },
-		height: function() { return responsiveDimensions().height; },
-		onOpen: function() {
+		width() {
+			return responsiveDimensions().width;
+		},
+		height() {
+			return responsiveDimensions().height;
+		},
+		onOpen() {
 			$( 'html' ).addClass( 'ytfancybox-open' );
-			var $block = $( this ).closest( '.youtubefancybox-block' );
+			const $block = $( this ).closest( '.youtubefancybox-block' );
 			if ( $block.hasClass( 'is-style-dark' ) ) {
 				$( 'body' ).addClass( 'ytfancybox-style-dark' );
 			} else if ( $block.hasClass( 'is-style-cinema' ) ) {
 				$( 'body' ).addClass( 'ytfancybox-style-cinema' );
 			}
 		},
-		onClosed: function() {
+		onClosed() {
 			$( 'html' ).removeClass( 'ytfancybox-open' );
 			$( 'body' ).removeClass( STYLE_CLASSES.join( ' ' ) );
 		},
-		onResize: function() {
+		onResize() {
 			$.colorbox.resize( responsiveDimensions() );
 		},
 	} );

@@ -45,7 +45,7 @@ if ( '' === $provider ) {
 
 $width    = (int) $attributes['width'];
 $height   = (int) $attributes['height'];
-$fluid    = $width === 0 || $height === 0;
+$fluid    = 0 === $width || 0 === $height;
 $autoplay = ! empty( $attributes['autoplay'] );
 
 $thumbnail = '';
