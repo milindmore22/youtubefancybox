@@ -102,3 +102,8 @@ Yes. Add the **Video Lightbox for YouTube/Vimeo** block, then enter a public You
 
 = 1.0.0 =
 * Initial release.
+
+== Upgrade Notice ==
+
+= 3.0.0 =
+* Added the Video Lightbox block for YouTube and Vimeo.
