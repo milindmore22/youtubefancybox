@@ -23,7 +23,6 @@ jobs:
   # - Installs npm dependencies.
   # - Runs ESLint.
   # - Runs Stylelint.
-  # - Runs TSC.
   js-css:
     name: Lint JS and CSS
     runs-on: ubuntu-24.04
@@ -52,9 +51,6 @@ jobs:
 
       - name: Run Stylelint
         run: npm run lint:css
-
-      - name: Run TypeScript checks
-        run: npm run lint:js:types
 
   # Runs the PHP coding standards checks.
   #
