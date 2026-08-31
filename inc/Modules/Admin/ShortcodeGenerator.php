@@ -181,7 +181,7 @@ class ShortcodeGenerator implements Registrable {
 
 			if ( 'watch' === $path && isset( $url_parts['query'] ) ) {
 				parse_str( $url_parts['query'], $query_args );
-				return isset( $query_args['v'] ) && 1 === preg_match( '/^[A-Za-z0-9_-]{11}$/', $query_args['v'] );
+				return isset( $query_args['v'] ) && is_string( $query_args['v'] ) && 1 === preg_match( '/^[A-Za-z0-9_-]{11}$/', $query_args['v'] );
 			}
 
 			return 1 === preg_match( '#^(?:embed|shorts|live)/[A-Za-z0-9_-]{11}$#', $path );
