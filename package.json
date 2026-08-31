@@ -1,6 +1,16 @@
 {
 	"name": "youtubefancybox",
+	"version": "3.0.0",
 	"private": true,
+	"files": [
+		"inc/**/*",
+		"build/**/*",
+		"languages/**/*",
+		"vendor/**/*",
+		"*.php",
+		"readme.*",
+		"license.*"
+	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/milindmore22/youtubefancybox.git"
