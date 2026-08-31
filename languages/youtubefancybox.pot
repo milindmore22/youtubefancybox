@@ -1,0 +1,314 @@
+# Copyright (C) 2026 Milind More
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Video Lightbox for YouTube/Vimeo 3.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/youtubefancybox\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-08-31T15:12:44+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: youtubefancybox\n"
+
+#. Plugin Name of the plugin
+#: youtubefancybox.php
+msgid "Video Lightbox for YouTube/Vimeo"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: youtubefancybox.php
+msgid "https://wordpress.org/plugins/youtubefancybox/"
+msgstr ""
+
+#. Description of the plugin
+#: youtubefancybox.php
+msgid "Display thumbnail of Youtube and Vimeo videos and on clicking on thumbnail it will open in popupbox and play video."
+msgstr ""
+
+#. Author of the plugin
+#: youtubefancybox.php
+msgid "Milind More"
+msgstr ""
+
+#. Author URI of the plugin
+#: youtubefancybox.php
+msgid "https://milindmore.wordpress.com/"
+msgstr ""
+
+#: inc/Autoloader.php:78
+msgid "Video Lightbox for YouTube/Vimeo: The Composer autoloader was not found. If you installed the plugin from the GitHub source code, make sure to run `composer install`."
+msgstr ""
+
+#: inc/Blocks/VideoLightbox/render.php:122
+#: inc/Modules/Blocks/VideoLightbox.php:189
+#: assets/src/blocks/video-lightbox/index.js:80
+#: build/blocks/video-lightbox.js:1
+msgid "Video thumbnail"
+msgstr ""
+
+#. translators: %s: Video provider name.
+#: inc/Blocks/VideoLightbox/render.php:152
+msgid "Play %s video"
+msgstr ""
+
+#. translators: %s: Class name.
+#: inc/Contracts/Traits/Singleton.php:57
+msgid "The %s class should not be cloned."
+msgstr ""
+
+#. translators: %s: Class name.
+#: inc/Contracts/Traits/Singleton.php:72
+msgid "De-serializing instances of %s is not allowed."
+msgstr ""
+
+#: inc/Modules/Admin/ShortcodeGenerator.php:38
+#: inc/Modules/Admin/ShortcodeGenerator.php:39
+msgid "Video Lightbox"
+msgstr ""
+
+#: inc/Modules/Admin/ShortcodeGenerator.php:70
+msgid "Enter a valid YouTube or Vimeo video URL or video ID."
+msgstr ""
+
+#: inc/Modules/Admin/ShortcodeGenerator.php:75
+msgid "Video Lightbox Shortcode Generator"
+msgstr ""
+
+#: inc/Modules/Admin/ShortcodeGenerator.php:84
+msgid "Video URL or ID"
+msgstr ""
+
+#: inc/Modules/Admin/ShortcodeGenerator.php:90
+msgid "Width"
+msgstr ""
+
+#: inc/Modules/Admin/ShortcodeGenerator.php:94
+msgid "Height"
+msgstr ""
+
+#: inc/Modules/Admin/ShortcodeGenerator.php:99
+msgid "Generate shortcode"
+msgstr ""
+
+#: inc/Modules/Admin/ShortcodeGenerator.php:103
+msgid "Shortcode"
+msgstr ""
+
+#: inc/Modules/Shortcode/Vimeo.php:71
+msgid "Please Enter Vimeo ID or Vimeo URL as [vimeo videoid=\"XXXXX\"]"
+msgstr ""
+
+#: inc/Modules/Shortcode/Youtube.php:70
+msgid "Please Enter Youtube ID or Youtube URL as [youtube videoid=\"XXXXX\"]"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:152
+#: build/blocks/video-lightbox.js:1
+msgid "That does not look like a valid YouTube or Vimeo URL. Please paste the full link."
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:189
+#: build/blocks/video-lightbox.js:1
+msgid "none yet"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:192
+#: build/blocks/video-lightbox.js:1
+msgid "YouTube"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:194
+#: build/blocks/video-lightbox.js:1
+msgid "Vimeo"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:208
+#: build/blocks/video-lightbox.js:1
+msgid "Change video"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:213
+#: build/blocks/video-lightbox.js:1
+msgid "Remove video"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:221
+#: build/blocks/video-lightbox.js:1
+msgid "Video"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:223
+#: assets/src/blocks/video-lightbox/index.js:379
+#: build/blocks/video-lightbox.js:1
+msgid "Video URL"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:226
+#: build/blocks/video-lightbox.js:1
+msgid "Use “Edit video URL” to change the video."
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:232
+#: build/blocks/video-lightbox.js:1
+msgid "Edit video URL"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:236
+#: build/blocks/video-lightbox.js:1
+msgid "Placeholder image"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:238
+#: build/blocks/video-lightbox.js:1
+msgid "By default the provider thumbnail is shown. Choose a custom image to use instead."
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:258
+#: build/blocks/video-lightbox.js:1
+msgid "Replace image"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:259
+#: build/blocks/video-lightbox.js:1
+msgid "Choose custom image"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:273
+#: build/blocks/video-lightbox.js:1
+msgid "Use default thumbnail"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:282
+#: build/blocks/video-lightbox.js:1
+msgid "Display"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:284
+#: build/blocks/video-lightbox.js:1
+msgid "Width (px)"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:291
+#: build/blocks/video-lightbox.js:1
+msgid "Follows alignment width."
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:294
+#: build/blocks/video-lightbox.js:1
+msgid "Height (px)"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:301
+#: build/blocks/video-lightbox.js:1
+msgid "16:9 aspect ratio used."
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:304
+#: build/blocks/video-lightbox.js:1
+msgid "Autoplay when opened"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:307
+#: build/blocks/video-lightbox.js:1
+msgid "The video starts playing as soon as the lightbox opens."
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:311
+#: build/blocks/video-lightbox.js:1
+msgid "The viewer presses play inside the lightbox."
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:342
+#: build/blocks/video-lightbox.js:1
+msgid "Add YouTube or Vimeo video"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:345
+#: build/blocks/video-lightbox.js:1
+msgid "Click to add a video from a URL."
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:361
+#: build/blocks/video-lightbox.js:1
+msgid "Loading video thumbnail…"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:374
+#: build/blocks/video-lightbox.js:1
+msgid "Add video from URL"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:383
+#: build/blocks/video-lightbox.js:1
+msgid "Paste the full link to a YouTube or Vimeo video."
+msgstr ""
+
+#. translators: %s: Provider name.
+#: assets/src/blocks/video-lightbox/index.js:397
+#: build/blocks/video-lightbox.js:2
+msgid "Provider detected: %s."
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:406
+#: build/blocks/video-lightbox.js:2
+msgid "Add video"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:409
+#: build/blocks/video-lightbox.js:2
+msgid "Cancel"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:424
+#: build/blocks/video-lightbox.js:2
+msgid "Default"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:425
+#: build/blocks/video-lightbox.js:2
+msgid "Dark"
+msgstr ""
+
+#: assets/src/blocks/video-lightbox/index.js:426
+#: build/blocks/video-lightbox.js:2
+msgid "Cinema"
+msgstr ""
+
+#: inc/Blocks/VideoLightbox/block.json
+msgctxt "block title"
+msgid "Video Lightbox for YouTube/Vimeo"
+msgstr ""
+
+#: inc/Blocks/VideoLightbox/block.json
+msgctxt "block description"
+msgid "Add a YouTube or Vimeo video that opens in a lightbox when the thumbnail is clicked."
+msgstr ""
+
+#: inc/Blocks/VideoLightbox/block.json
+msgctxt "block keyword"
+msgid "youtube"
+msgstr ""
+
+#: inc/Blocks/VideoLightbox/block.json
+msgctxt "block keyword"
+msgid "vimeo"
+msgstr ""
+
+#: inc/Blocks/VideoLightbox/block.json
+msgctxt "block keyword"
+msgid "video"
+msgstr ""
+
+#: inc/Blocks/VideoLightbox/block.json
+msgctxt "block keyword"
+msgid "lightbox"
+msgstr ""
+
+#: inc/Blocks/VideoLightbox/block.json
+msgctxt "block keyword"
+msgid "popup"
+msgstr ""
