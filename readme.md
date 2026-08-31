@@ -9,18 +9,19 @@
 
 ---
 
-## 🚀 Features
+## Features
 
-- **YouTube & Vimeo Support**: Embed any public video using clean, flexible shortcodes.
-- **Responsive Popup Lightbox**: Seamless modal playback using Colorbox.
-- **AMP Ready**: First-class support for the official WordPress AMP plugin (`amp-lightbox`, `amp-youtube`, and `amp-vimeo`).
-- **Dashboard Shortcode Generator**: Dedicated generator panels in the admin dashboard to generate shortcodes in seconds.
-- **Customizable Defaults**: Easily define global height, width, and autoplay preferences.
-- **Conditional Asset Loading**: Scripts and stylesheets are enqueued strictly where needed to ensure optimal Core Web Vitals.
+- **Block editor support**: Add a Video Lightbox block, paste a YouTube or Vimeo URL, and choose a custom placeholder image.
+- **YouTube and Vimeo support**: Embed public YouTube videos, Shorts, and Vimeo videos with a block or shortcode.
+- **Responsive lightbox**: Opens video playback in a responsive Colorbox overlay.
+- **Block styles**: Choose Default, Dark, or Cinema presentation styles in the block editor.
+- **Display controls**: Set thumbnail width, height, and autoplay for each block.
+- **Shortcode generator**: Generate a validated YouTube or Vimeo shortcode from **Media > Video Lightbox**. The provider is detected automatically.
+- **AMP support**: Renders `amp-lightbox`, `amp-youtube`, and `amp-vimeo` components on AMP requests.
 
 ---
 
-## 📦 Installation
+## Installation
 
 ### From WordPress Dashboard:
 1. Go to **Plugins > Add New**.
@@ -34,7 +35,15 @@
 
 ---
 
-## 💡 Usage & Shortcodes
+## Usage
+
+### Block Editor
+
+1. Add the **Video Lightbox for YouTube/Vimeo** block.
+2. Select **Edit video URL** and enter a public YouTube or Vimeo URL.
+3. Optionally choose a custom placeholder image and adjust display settings in the block sidebar.
+
+### Shortcodes
 
 ### YouTube Shortcodes
 ```text
@@ -48,7 +57,7 @@
 [vimeo videoid="76979871" width="400" height="350"]
 ```
 
-### Shortcode Attributes:
+### Shortcode Attributes
 | Attribute | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `url` | string | `""` | Full YouTube or Vimeo URL. |
@@ -58,14 +67,18 @@
 
 ---
 
-## 🛠️ Development
+### Shortcode Generator
 
-### Requirements:
+Go to **Media > Video Lightbox**, enter a YouTube or Vimeo video URL or ID and dimensions, then click **Generate shortcode**. The plugin validates the input and detects the provider automatically.
+
+## Development
+
+### Requirements
 - PHP >= 8.1
 - Node.js >= 22.0.0
 - Composer
 
-### Setup & Commands:
+### Setup and Commands
 ```bash
 # Install PHP dependencies
 composer install
@@ -84,16 +97,17 @@ npm run lint
 npm run lint:css
 npm run lint:js
 npm run lint:php
+npm run lint:php:stan
 ```
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions, issues, and feature requests are welcome! Please check out [CONTRIBUTING.md](./CONTRIBUTING.md) for contribution guidelines.
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the [GPL-2.0-or-later](https://www.gnu.org/licenses/gpl-2.0.html) license.
