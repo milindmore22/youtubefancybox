@@ -72,8 +72,9 @@ class Vimeo implements Registrable {
 		}
 
 		$protocol        = is_ssl() ? 'https' : 'http';
-		$embed_url       = $protocol . '://player.vimeo.com/video/' . $attr['videoid'] . '?' . $autoplay . '&color=ffffff';
-		$embed_image_url = $protocol . '://vimeo.com/api/v2/video/' . $attr['videoid'] . '.json';
+		$video_id        = rawurlencode( $attr['videoid'] );
+		$embed_url       = $protocol . '://player.vimeo.com/video/' . $video_id . '?' . $autoplay . '&color=ffffff';
+		$embed_image_url = $protocol . '://vimeo.com/api/v2/video/' . $video_id . '.json';
 
 		$thumbnail_url = wp_cache_get( 'vimeo_thumnail_' . $attr['videoid'], 'ytubefancybox' );
 
@@ -81,7 +82,7 @@ class Vimeo implements Registrable {
 			$response = wp_remote_get( $embed_image_url ); // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.wp_remote_get_wp_remote_get
 
 			if ( is_wp_error( $response ) ) {
-				return '<br /><span style="clear:both;color:red">' . $response->get_error_message() . '</span>';
+				return '<br /><span style="clear:both;color:red">' . esc_html( $response->get_error_message() ) . '</span>';
 			}
 
 			$response_body = wp_remote_retrieve_body( $response );
