@@ -4,7 +4,7 @@ Tags: youtube, vimeo, lightbox, popup-video, shortcode
 Requires at least: 6.7
 Requires PHP: 8.1
 Tested up to: 7.1
-Stable tag: 3.0.0
+Stable tag: 3.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -78,6 +78,9 @@ The source code is available on <a href="https://github.com/milindmore22/youtube
 5. Video Lightbox popup playing a video on the frontend.
 
 == Changelog ==
+
+= 3.0.1 =
+* Bump version to 3.0.1 for WordPress.org plugin repository.
 
 = 3.0.0 =
 * Added the Video Lightbox block for YouTube and Vimeo.
