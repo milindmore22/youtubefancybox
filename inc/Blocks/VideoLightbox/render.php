@@ -114,8 +114,11 @@ if ( function_exists( 'amp_is_request' ) && amp_is_request() ) {
 	if ( '' === $amp_alt ) {
 		$amp_alt = __( 'Video thumbnail', 'youtubefancybox' );
 	}
+
+	$wrapper_style = sprintf( 'max-width:%dpx', $width );
+	$ratio_style   = sprintf( 'aspect-ratio:%d / %d', $width, $height );
 	?>
-	<div <?php echo get_block_wrapper_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+	<div <?php echo get_block_wrapper_attributes( [ 'style' => $wrapper_style ] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 		<amp-lightbox class="ytfancybox-lightbox alignfull" id="<?php echo esc_attr( $light_box_id ); ?>" layout="nodisplay">
 			<div class="youtubefancybox-amp-lightbox" role="button" tabindex="0">
 				<span role="button" tabindex="0" on="tap:<?php echo esc_attr( $light_box_id ); ?>.close" class="youtubefancybox-amp-lightbox-close">X</span>
@@ -123,7 +126,7 @@ if ( function_exists( 'amp_is_request' ) && amp_is_request() ) {
 				</<?php echo esc_html( $player_tag ); ?>>
 			</div>
 		</amp-lightbox>
-		<span class="youtubefancybox-block__trigger" role="button" tabindex="0" on="tap:<?php echo esc_attr( $light_box_id ); ?>">
+		<span class="youtubefancybox-block__trigger" role="button" tabindex="0" on="tap:<?php echo esc_attr( $light_box_id ); ?>" style="<?php echo esc_attr( $ratio_style ); ?>">
 			<amp-img src="<?php echo esc_url( $amp_src ); ?>" alt="<?php echo esc_attr( $amp_alt ); ?>" width="<?php echo esc_attr( (string) $width ); ?>" height="<?php echo esc_attr( (string) $height ); ?>" layout="intrinsic"></amp-img>
 			<?php echo $play_icon; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		</span>
@@ -136,12 +139,16 @@ $embed_url = VideoLightbox::get_embed_url( $provider, $video_id, $autoplay );
 
 /* translators: %s: Video provider name. */
 $aria_label = sprintf( esc_html__( 'Play %s video', 'youtubefancybox' ), $provider );
+
+$wrapper_style = sprintf( 'max-width:%dpx', $width );
+$ratio_style   = sprintf( 'aspect-ratio:%d / %d', $width, $height );
 ?>
-<div <?php echo get_block_wrapper_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+<div <?php echo get_block_wrapper_attributes( [ 'style' => $wrapper_style ] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 	<a
 		class="<?php echo esc_attr( $provider ); ?> youtubefancybox-block__trigger"
 		href="<?php echo esc_url( $embed_url ); ?>"
 		aria-label="<?php echo esc_attr( $aria_label ); ?>"
+		style="<?php echo esc_attr( $ratio_style ); ?>"
 	>
 		<?php echo $thumbnail; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		<?php echo $play_icon; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>

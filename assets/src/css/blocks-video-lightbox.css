@@ -7,19 +7,27 @@
 	max-width: 100%;
 }
 
+.youtubefancybox-block.aligncenter,
+.youtubefancybox-block.alignwide,
+.youtubefancybox-block.alignfull {
+	margin-inline: auto;
+}
+
 .youtubefancybox-block__trigger {
 	position: relative;
-	display: inline-block;
-	max-width: 100%;
+	display: block;
+	width: 100%;
 	line-height: 0;
 	text-decoration: none;
+	overflow: hidden;
 }
 
 .youtubefancybox-block__trigger img,
 .youtubefancybox-block__trigger amp-img {
 	display: block;
-	height: auto;
-	max-width: 100%;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .youtubefancybox-block__play {

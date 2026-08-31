@@ -71,7 +71,10 @@ function PlayIcon() {
  */
 function Preview( { src, alt, width, height } ) {
 	return (
-		<div className="youtubefancybox-block__preview">
+		<div
+			className="youtubefancybox-block__preview"
+			style={ { aspectRatio: `${ width } / ${ height }` } }
+		>
 			<img
 				src={ src }
 				alt={ alt || __( 'Video thumbnail', 'youtubefancybox' ) }
