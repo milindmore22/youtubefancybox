@@ -33,6 +33,7 @@ final class Main {
 	 */
 	private const REGISTRABLE_CLASSES = [
 		Modules\Blocks\VideoLightbox::class,
+		Modules\Admin\ShortcodeGenerator::class,
 		Modules\Shortcode\Youtube::class,
 		Modules\Shortcode\Vimeo::class,
 		Modules\Core\Assets::class,
