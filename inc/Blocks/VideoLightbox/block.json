@@ -55,11 +55,11 @@
 		},
 		"height": {
 			"type": "number",
-			"default": 350
+			"default": 0
 		},
 		"width": {
 			"type": "number",
-			"default": 400
+			"default": 0
 		},
 		"autoplay": {
 			"type": "boolean",

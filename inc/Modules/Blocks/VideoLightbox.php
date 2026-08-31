@@ -73,8 +73,8 @@ class VideoLightbox implements Registrable {
 	/**
 	 * Build the block attributes map.
 	 *
-	 * Height, width and autoplay defaults fall back to the plugin's global
-	 * settings so new blocks pick up the configured site defaults.
+	 * Height and width have no fixed default so the block can follow the
+	 * alignment width and use a fluid 16:9 layout unless the user sets a size.
 	 *
 	 * @return array<string, array<string, mixed>> Attributes map.
 	 */
@@ -197,9 +197,7 @@ class VideoLightbox implements Registrable {
 	 * @return int Default height.
 	 */
 	private static function default_height(): int {
-		$option = (int) get_option( 'youtube_height' );
-
-		return $option > 0 ? $option : 350;
+		return 0;
 	}
 
 	/**
@@ -208,9 +206,7 @@ class VideoLightbox implements Registrable {
 	 * @return int Default width.
 	 */
 	private static function default_width(): int {
-		$option = (int) get_option( 'youtube_width' );
-
-		return $option > 0 ? $option : 400;
+		return 0;
 	}
 
 	/**

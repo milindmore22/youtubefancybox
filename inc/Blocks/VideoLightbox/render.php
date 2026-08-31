@@ -26,8 +26,8 @@ use YTubeFancy\Modules\Blocks\VideoLightbox;
 			'thumbnailId'  => 0,
 			'thumbnailUrl' => '',
 			'thumbnailAlt' => '',
-			'height'       => 350,
-			'width'        => 400,
+			'height'       => 0,
+			'width'        => 0,
 			'autoplay'     => false,
 		]
 	);
