@@ -21,8 +21,7 @@
 		"assets/src/js/jquery.colorbox.js"
 	],
 	"globals": {
-		"jQuery": true,
-		"fancybox_admin_obj": true
+		"jQuery": true
 	},
 	"rules": {
 		"eslint-comments/no-unlimited-disable": "error",

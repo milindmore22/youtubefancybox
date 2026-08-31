@@ -52,9 +52,9 @@ const styles = {
 const scripts = {
 	...sharedConfig,
 	entry: {
-		'js/fancybox_admin': path.resolve( process.cwd(), 'assets', 'src', 'js', 'fancybox_admin.js' ),
 		'js/caller': path.resolve( process.cwd(), 'assets', 'src', 'js', 'caller.js' ),
 		'js/jquery.colorbox': path.resolve( process.cwd(), 'assets', 'src', 'js', 'jquery.colorbox.js' ),
+		'blocks/video-lightbox': path.resolve( process.cwd(), 'assets', 'src', 'blocks', 'video-lightbox', 'index.js' ),
 	},
 	module: {
 		rules:
