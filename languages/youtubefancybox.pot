@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Video Lightbox for YouTube/Vimeo 3.0.0\n"
+"Project-Id-Version: Video Lightbox for YouTube/Vimeo 3.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/youtubefancybox\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-31T15:12:44+00:00\n"
+"POT-Creation-Date: 2026-08-31T19:35:51+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: youtubefancybox\n"
@@ -43,7 +43,7 @@ msgstr ""
 msgid "Video Lightbox for YouTube/Vimeo: The Composer autoloader was not found. If you installed the plugin from the GitHub source code, make sure to run `composer install`."
 msgstr ""
 
-#: inc/Blocks/VideoLightbox/render.php:122
+#: inc/Blocks/VideoLightbox/render.php:123
 #: inc/Modules/Blocks/VideoLightbox.php:189
 #: assets/src/blocks/video-lightbox/index.js:80
 #: build/blocks/video-lightbox.js:1
@@ -51,7 +51,7 @@ msgid "Video thumbnail"
 msgstr ""
 
 #. translators: %s: Video provider name.
-#: inc/Blocks/VideoLightbox/render.php:152
+#: inc/Blocks/VideoLightbox/render.php:153
 msgid "Play %s video"
 msgstr ""
 
