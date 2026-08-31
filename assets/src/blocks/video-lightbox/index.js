@@ -4,7 +4,7 @@
  * @package
  */
 
-import { registerBlockType } from '@wordpress/blocks';
+import { registerBlockType, registerBlockStyle } from '@wordpress/blocks';
 import { __, sprintf } from '@wordpress/i18n';
 import { useEffect, useState } from '@wordpress/element';
 import {
@@ -196,7 +196,7 @@ function Edit( { attributes, setAttributes } ) {
 
 	const blockProps = useBlockProps( {
 		className: 'youtubefancybox-block',
-		style: width > 0 ? { maxWidth: `${ width }px` } : undefined,
+		style: width > 0 ? { maxWidth: `${ width }px` } : {},
 	} );
 
 	return (
@@ -282,21 +282,23 @@ function Edit( { attributes, setAttributes } ) {
 				<PanelBody title={ __( 'Display', 'youtubefancybox' ) }>
 					<RangeControl
 						label={ __( 'Width (px)', 'youtubefancybox' ) }
-						value={ width }
-						onChange={ ( value ) => setAttributes( { width: value } ) }
+						value={ width || undefined }
+						onChange={ ( value ) => setAttributes( { width: value ?? 0 } ) }
 						min={ 100 }
 						max={ 1600 }
 						step={ 10 }
 						allowReset
+						help={ ! width ? __( 'Follows alignment width.', 'youtubefancybox' ) : undefined }
 					/>
 					<RangeControl
 						label={ __( 'Height (px)', 'youtubefancybox' ) }
-						value={ height }
-						onChange={ ( value ) => setAttributes( { height: value } ) }
+						value={ height || undefined }
+						onChange={ ( value ) => setAttributes( { height: value ?? 0 } ) }
 						min={ 56 }
 						max={ 1600 }
 						step={ 10 }
 						allowReset
+						help={ ! height ? __( '16:9 aspect ratio used.', 'youtubefancybox' ) : undefined }
 					/>
 					<ToggleControl
 						label={ __( 'Autoplay when opened', 'youtubefancybox' ) }
@@ -417,3 +419,9 @@ registerBlockType( BLOCK_NAME, {
 	edit: Edit,
 	save: () => null,
 } );
+
+registerBlockStyle( BLOCK_NAME, [
+	{ name: 'default', label: __( 'Default', 'youtubefancybox' ), isDefault: true },
+	{ name: 'dark', label: __( 'Dark', 'youtubefancybox' ) },
+	{ name: 'cinema', label: __( 'Cinema', 'youtubefancybox' ) },
+] );

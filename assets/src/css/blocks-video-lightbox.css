@@ -60,3 +60,93 @@
 		transition: none;
 	}
 }
+
+/* ── Dark style ──────────────────────────────────────────────────────────── */
+
+body.ytfancybox-style-dark #cboxOverlay {
+	background: #000;
+	background-image: none;
+	opacity: 0.88;
+	filter: none;
+}
+
+body.ytfancybox-style-dark #cboxContent,
+body.ytfancybox-style-dark .cboxIframe {
+	background: #1c1c1e;
+}
+
+body.ytfancybox-style-dark #cboxTopCenter,
+body.ytfancybox-style-dark #cboxBottomCenter {
+	background-image: none;
+	background-color: #2c2c2e;
+}
+
+body.ytfancybox-style-dark #cboxMiddleLeft,
+body.ytfancybox-style-dark #cboxMiddleRight {
+	background-image: none;
+	background-color: #2c2c2e;
+}
+
+body.ytfancybox-style-dark #cboxTopLeft,
+body.ytfancybox-style-dark #cboxTopRight,
+body.ytfancybox-style-dark #cboxBottomLeft,
+body.ytfancybox-style-dark #cboxBottomRight {
+	background-image: none;
+	background-color: #2c2c2e;
+}
+
+body.ytfancybox-style-dark #cboxPrevious,
+body.ytfancybox-style-dark #cboxNext,
+body.ytfancybox-style-dark #cboxClose {
+	filter: invert(1);
+}
+
+body.ytfancybox-style-dark #cboxLoadingOverlay {
+	background-color: #1c1c1e;
+	background-image: none;
+}
+
+/* ── Cinema style ────────────────────────────────────────────────────────── */
+
+body.ytfancybox-style-cinema #cboxOverlay {
+	background: #000;
+	background-image: none;
+	opacity: 0.97;
+	filter: none;
+}
+
+body.ytfancybox-style-cinema #cboxContent,
+body.ytfancybox-style-cinema .cboxIframe {
+	background: #000;
+}
+
+body.ytfancybox-style-cinema #cboxTopCenter,
+body.ytfancybox-style-cinema #cboxBottomCenter {
+	background-image: none;
+	background-color: #000;
+}
+
+body.ytfancybox-style-cinema #cboxMiddleLeft,
+body.ytfancybox-style-cinema #cboxMiddleRight {
+	background-image: none;
+	background-color: #000;
+}
+
+body.ytfancybox-style-cinema #cboxTopLeft,
+body.ytfancybox-style-cinema #cboxTopRight,
+body.ytfancybox-style-cinema #cboxBottomLeft,
+body.ytfancybox-style-cinema #cboxBottomRight {
+	background-image: none;
+	background-color: #000;
+}
+
+body.ytfancybox-style-cinema #cboxPrevious,
+body.ytfancybox-style-cinema #cboxNext,
+body.ytfancybox-style-cinema #cboxClose {
+	filter: invert(1) opacity(0.6);
+}
+
+body.ytfancybox-style-cinema #cboxLoadingOverlay {
+	background-color: #000;
+	background-image: none;
+}

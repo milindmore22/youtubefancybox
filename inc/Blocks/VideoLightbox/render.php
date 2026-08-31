@@ -43,35 +43,42 @@ if ( '' === $provider ) {
 	return '';
 }
 
-$width    = max( 1, (int) $attributes['width'] );
-$height   = max( 1, (int) $attributes['height'] );
+$width    = (int) $attributes['width'];
+$height   = (int) $attributes['height'];
+$fluid    = $width === 0 || $height === 0;
 $autoplay = ! empty( $attributes['autoplay'] );
 
 $thumbnail = '';
 
 if ( ! empty( $attributes['thumbnailId'] ) ) {
-	$thumbnail = wp_get_attachment_image(
-		(int) $attributes['thumbnailId'],
-		'full',
-		false,
-		[
-			'alt'      => (string) $attributes['thumbnailAlt'],
-			'width'    => $width,
-			'height'   => $height,
-			'loading'  => 'lazy',
-			'decoding' => 'async',
-		]
-	);
+	$img_attrs = [
+		'alt'      => (string) $attributes['thumbnailAlt'],
+		'loading'  => 'lazy',
+		'decoding' => 'async',
+	];
+	if ( ! $fluid ) {
+		$img_attrs['width']  = $width;
+		$img_attrs['height'] = $height;
+	}
+	$thumbnail = wp_get_attachment_image( (int) $attributes['thumbnailId'], 'full', false, $img_attrs );
 }
 
 if ( '' === $thumbnail && ! empty( $attributes['thumbnailUrl'] ) ) {
-	$thumbnail = sprintf(
-		'<img src="%1$s" alt="%2$s" width="%3$d" height="%4$d" loading="lazy" decoding="async" />',
-		esc_url( (string) $attributes['thumbnailUrl'] ),
-		esc_attr( (string) $attributes['thumbnailAlt'] ),
-		$width,
-		$height
-	);
+	if ( $fluid ) {
+		$thumbnail = sprintf(
+			'<img src="%1$s" alt="%2$s" loading="lazy" decoding="async" />',
+			esc_url( (string) $attributes['thumbnailUrl'] ),
+			esc_attr( (string) $attributes['thumbnailAlt'] )
+		);
+	} else {
+		$thumbnail = sprintf(
+			'<img src="%1$s" alt="%2$s" width="%3$d" height="%4$d" loading="lazy" decoding="async" />',
+			esc_url( (string) $attributes['thumbnailUrl'] ),
+			esc_attr( (string) $attributes['thumbnailAlt'] ),
+			$width,
+			$height
+		);
+	}
 }
 
 if ( '' === $thumbnail ) {
@@ -115,10 +122,14 @@ if ( function_exists( 'amp_is_request' ) && amp_is_request() ) {
 		$amp_alt = __( 'Video thumbnail', 'youtubefancybox' );
 	}
 
-	$wrapper_style = sprintf( 'max-width:%dpx', $width );
-	$ratio_style   = sprintf( 'aspect-ratio:%d / %d', $width, $height );
+	$wrapper_style = $fluid ? '' : sprintf( 'max-width:%dpx', $width );
+	$ratio_style   = $fluid ? 'aspect-ratio:16 / 9' : sprintf( 'aspect-ratio:%d / %d', $width, $height );
+	$wrapper_attrs = [ 'class' => 'youtubefancybox-block' ];
+	if ( $wrapper_style ) {
+		$wrapper_attrs['style'] = $wrapper_style;
+	}
 	?>
-	<div <?php echo get_block_wrapper_attributes( [ 'style' => $wrapper_style ] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+	<div <?php echo get_block_wrapper_attributes( $wrapper_attrs ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 		<amp-lightbox class="ytfancybox-lightbox alignfull" id="<?php echo esc_attr( $light_box_id ); ?>" layout="nodisplay">
 			<div class="youtubefancybox-amp-lightbox" role="button" tabindex="0">
 				<span role="button" tabindex="0" on="tap:<?php echo esc_attr( $light_box_id ); ?>.close" class="youtubefancybox-amp-lightbox-close">X</span>
@@ -140,10 +151,14 @@ $embed_url = VideoLightbox::get_embed_url( $provider, $video_id, $autoplay );
 /* translators: %s: Video provider name. */
 $aria_label = sprintf( esc_html__( 'Play %s video', 'youtubefancybox' ), $provider );
 
-$wrapper_style = sprintf( 'max-width:%dpx', $width );
-$ratio_style   = sprintf( 'aspect-ratio:%d / %d', $width, $height );
+$wrapper_style = $fluid ? '' : sprintf( 'max-width:%dpx', $width );
+$ratio_style   = $fluid ? 'aspect-ratio:16 / 9' : sprintf( 'aspect-ratio:%d / %d', $width, $height );
+$wrapper_attrs = [ 'class' => 'youtubefancybox-block' ];
+if ( $wrapper_style ) {
+	$wrapper_attrs['style'] = $wrapper_style;
+}
 ?>
-<div <?php echo get_block_wrapper_attributes( [ 'style' => $wrapper_style ] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+<div <?php echo get_block_wrapper_attributes( $wrapper_attrs ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 	<a
 		class="<?php echo esc_attr( $provider ); ?> youtubefancybox-block__trigger"
 		href="<?php echo esc_url( $embed_url ); ?>"

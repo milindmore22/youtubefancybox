@@ -17,6 +17,8 @@ jQuery( function( $ ) {
 		return { width: w + 'px', height: h + 'px' };
 	}
 
+	var STYLE_CLASSES = [ 'ytfancybox-style-dark', 'ytfancybox-style-cinema' ];
+
 	$( '.youtube, .vimeo' ).colorbox( {
 		iframe: true,
 		// evaluated fresh on each open and window resize
@@ -24,9 +26,16 @@ jQuery( function( $ ) {
 		height: function() { return responsiveDimensions().height; },
 		onOpen: function() {
 			$( 'html' ).addClass( 'ytfancybox-open' );
+			var $block = $( this ).closest( '.youtubefancybox-block' );
+			if ( $block.hasClass( 'is-style-dark' ) ) {
+				$( 'body' ).addClass( 'ytfancybox-style-dark' );
+			} else if ( $block.hasClass( 'is-style-cinema' ) ) {
+				$( 'body' ).addClass( 'ytfancybox-style-cinema' );
+			}
 		},
 		onClosed: function() {
 			$( 'html' ).removeClass( 'ytfancybox-open' );
+			$( 'body' ).removeClass( STYLE_CLASSES.join( ' ' ) );
 		},
 		onResize: function() {
 			$.colorbox.resize( responsiveDimensions() );

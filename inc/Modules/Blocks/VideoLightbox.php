@@ -181,12 +181,13 @@ class VideoLightbox implements Registrable {
 			return '';
 		}
 
+		$size_attrs = ( $width > 0 && $height > 0 ) ? sprintf( ' width="%1$d" height="%2$d"', $width, $height ) : '';
+
 		return sprintf(
-			'<img src="%1$s" alt="%2$s" width="%3$d" height="%4$d" loading="lazy" decoding="async" />',
+			'<img src="%1$s" alt="%2$s"%3$s loading="lazy" decoding="async" />',
 			esc_url( $thumbnail_url ),
 			esc_attr__( 'Video thumbnail', 'youtubefancybox' ),
-			$width,
-			$height
+			$size_attrs
 		);
 	}
 
