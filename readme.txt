@@ -72,8 +72,10 @@ The source code is available on <a href="https://github.com/milindmore22/youtube
 == Screenshots ==
 
 1. Video Lightbox block in the editor.
-2. Video Lightbox shortcode generator under Media.
-3. Video Lightbox popup playing a video on the frontend.
+2. Video Lightbox popup for entering a YouTube or Vimeo URL.
+3. Video Lightbox block settings in the sidebar.
+4. Video Lightbox shortcode generator under Media.
+5. Video Lightbox popup playing a video on the frontend.
 
 == Changelog ==
 
