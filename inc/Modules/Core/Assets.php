@@ -89,7 +89,7 @@ class Assets implements Registrable {
 	 * does not exist.
 	 *
 	 * @param string $relative_path Relative path from plugin root to the asset.php file.
-	 * @return array{ dependencies: string[], version: string } Asset metadata.
+	 * @return array{ dependencies: non-empty-string[], version: string } Asset metadata.
 	 */
 	private function get_asset( string $relative_path ): array { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found
 		$path = YTUBE_FANCY_DIR . $relative_path;

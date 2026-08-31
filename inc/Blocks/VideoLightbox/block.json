@@ -2,7 +2,7 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "youtubefancybox/video-lightbox",
-	"version": "2.7.1",
+	"version": "3.0.0",
 	"title": "Video Lightbox for YouTube/Vimeo",
 	"category": "media",
 	"icon": "format-video",
@@ -55,11 +55,11 @@
 		},
 		"height": {
 			"type": "number",
-			"default": 350
+			"default": 0
 		},
 		"width": {
 			"type": "number",
-			"default": 400
+			"default": 0
 		},
 		"autoplay": {
 			"type": "boolean",
