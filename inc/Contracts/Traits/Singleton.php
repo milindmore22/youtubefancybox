@@ -57,7 +57,7 @@ trait Singleton {
 				esc_html__( 'The %s class should not be cloned.', 'youtubefancybox' ),
 				esc_html( static::class ),
 			),
-			'2.7.1'
+			'3.0.0'
 		);
 	}
 
@@ -72,7 +72,7 @@ trait Singleton {
 				esc_html__( 'De-serializing instances of %s is not allowed.', 'youtubefancybox' ),
 				esc_html( static::class ),
 			),
-			'2.7.1'
+			'3.0.0'
 		);
 	}
 }

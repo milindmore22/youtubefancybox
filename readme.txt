@@ -3,8 +3,8 @@ Contributors: milindmore22
 Tags: youtube, vimeo, lightbox, popup-video, shortcode
 Requires at least: 6.7
 Requires PHP: 8.1
-Tested up to: 7.0
-Stable tag: 2.7.1
+Tested up to: 7.1
+Stable tag: 3.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,6 +66,11 @@ Navigate to **Video Lightbox > Youtube** or **Video Lightbox > Vimeo** in your W
 4. Video Lightbox popup playing a video on the frontend.
 
 == Changelog ==
+
+= 3.0.0 =
+* Fix text domain references and update plugin metadata
+* Updated block structure and configuration, dependencies and refactored code.
+* Added Block for Video lightbox with support for YouTube and Vimeo.
 
 = 2.7.1 =
 * Modernized admin settings and shortcode generator interfaces.

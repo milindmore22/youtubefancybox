@@ -5,11 +5,11 @@
  * Description: Display thumbnail of Youtube and Vimeo videos and on clicking on thumbnail it will open in popupbox and play video.
  * Author: Milind More
  * Author URI: https://milindmore.wordpress.com/
- * Version: 2.7.1
+ * Version: 3.0.0
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Requires at least: 6.7
- * Tested up to: 7.0
+ * Tested up to: 7.1
  * Text Domain: youtubefancybox
  * Domain Path: /languages/
  * Requires PHP: 8.1
@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Plugin version.
  */
-define( 'YTUBE_FANCY_VERSION', '2.7.1' );
+define( 'YTUBE_FANCY_VERSION', '3.0.0' );
 
 /**
  * Absolute path to the plugin directory.
