@@ -1,0 +1,26 @@
+{
+	"extends": "@wordpress/stylelint-config/scss",
+	"plugins": [
+		"@stylistic/stylelint-plugin"
+	],
+	"ignoreFiles": [
+		"**/*.js",
+		"**/*.json",
+		"**/*.php",
+		"**/*.svg",
+		"assets/src/css/colorbox.css"
+	],
+	"rules": {
+		"selector-class-pattern": null,
+		"selector-id-pattern": "^(?:cbox[A-Za-z0-9]+|[a-z][a-z0-9-]*)$",
+		"@stylistic/indentation": [
+			"tab",
+			{
+				"baseIndentLevel": 0,
+				"indentInsideParens": "once-at-root-twice-in-block"
+			}
+		],
+		"@stylistic/no-missing-end-of-source-newline": true,
+		"@stylistic/no-eol-whitespace": true
+	}
+}

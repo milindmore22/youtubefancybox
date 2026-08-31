@@ -1,0 +1,95 @@
+/**
+ * Video Lightbox for YouTube/Vimeo block — editor styles.
+ */
+
+.youtubefancybox-block {
+	position: relative;
+	max-width: 100%;
+}
+
+.youtubefancybox-block__placeholder {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	width: 100%;
+	max-width: 480px;
+	min-height: 220px;
+	padding: 40px 24px;
+	border: 1px dashed #c3c4c7;
+	border-radius: 8px;
+	background: #f6f7f7;
+	color: #1d2327;
+	cursor: pointer;
+	text-align: center;
+	font-family: inherit;
+}
+
+.youtubefancybox-block__placeholder:hover {
+	border-color: var( --wp-admin-theme-color, #2271b1 );
+}
+
+.youtubefancybox-block__placeholder:focus-visible {
+	outline: 2px solid var( --wp-admin-theme-color, #2271b1 );
+	outline-offset: 2px;
+}
+
+.youtubefancybox-block__placeholder-icon {
+	color: var( --wp-admin-theme-color, #2271b1 );
+	line-height: 0;
+}
+
+.youtubefancybox-block__placeholder-title {
+	font-size: 15px;
+	font-weight: 600;
+}
+
+.youtubefancybox-block__placeholder-hint {
+	font-size: 13px;
+	color: #646970;
+}
+
+.youtubefancybox-block__preview {
+	position: relative;
+	display: block;
+	width: 100%;
+	line-height: 0;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.youtubefancybox-block__preview img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.youtubefancybox-block__preview .youtubefancybox-block__play {
+	position: absolute;
+	inset: 0;
+	display: grid;
+	place-items: center;
+	line-height: normal;
+}
+
+.youtubefancybox-block__preview .youtubefancybox-block__play svg {
+	width: 64px;
+	height: 64px;
+}
+
+.youtubefancybox-block__loading {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 12px;
+	color: #646970;
+}
+
+.ytubefancybox-modal-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+	margin-top: 16px;
+}
