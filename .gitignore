@@ -35,7 +35,7 @@ phpstan.neon
 
 # Build
 build/
-universal-openai-connector.zip
+youtubefancybox.zip
 
 # TSConfig cache
 tsconfig.tsbuildinfo
