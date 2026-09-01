@@ -30,7 +30,8 @@ webpack.config.js
 package.json
 package-lock.json
 composer.lock
-assets/src
+assets
 tests
 CONTRIBUTING.md
 *.zip
+screenshots
