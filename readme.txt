@@ -4,7 +4,7 @@ Tags: youtube, vimeo, lightbox, popup-video, shortcode
 Requires at least: 6.7
 Requires PHP: 8.1
 Tested up to: 7.1
-Stable tag: 3.0.1
+Stable tag: 3.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,16 +23,6 @@ Display YouTube and Vimeo videos in a responsive lightbox using block editor con
 * **Shortcode generator**: Generate a validated YouTube or Vimeo shortcode from **Media > Video Lightbox**. The provider is detected automatically.
 * **AMP support**: Renders `amp-lightbox`, `amp-youtube`, and `amp-vimeo` components on AMP requests.
 
-### Shortcode Examples
-
-**YouTube:**
-`[youtube url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"]`
-`[youtube videoid="dQw4w9WgXcQ" width="400" height="350"]`
-
-**Vimeo:**
-`[vimeo url="https://vimeo.com/76979871"]`
-`[vimeo videoid="76979871" width="400" height="350"]`
-
 ### Block Editor
 
 1. Add the **Video Lightbox for YouTube/Vimeo** block.
@@ -43,17 +33,15 @@ Display YouTube and Vimeo videos in a responsive lightbox using block editor con
 
 1. Upload the `youtubefancybox` folder to your `/wp-content/plugins/` directory (or search for **Video Lightbox for YouTube/Vimeo** via **Plugins > Add New**).
 2. Activate the plugin through the **Plugins** screen in WordPress.
-3. Add the Video Lightbox block, or insert a `[youtube]` or `[vimeo]` shortcode into any post, page, or widget.
+3. Add the Video Lightbox block, or generate a YouTube or Vimeo shortcode from **Media > Video Lightbox** and insert it into any post, page, or widget.
 
 == Frequently Asked Questions ==
 
 = How do I use the plugin after activating it? =
-Insert a shortcode into your content. For example:
-`[youtube url="https://www.youtube.com/watch?v=VIDEO_ID"]` or `[vimeo url="https://vimeo.com/VIDEO_ID"]`.
+Add the Video Lightbox block, or generate a YouTube or Vimeo shortcode from **Media > Video Lightbox** and insert it into any post, page, or widget.
 
 = Can I override the default dimensions on a specific shortcode? =
-Yes. Pass `height` and `width` attributes directly in the shortcode:
-`[youtube videoid="VIDEO_ID" width="600" height="400"]`
+Yes. You can override default dimensions using the `height` and `width` attributes in the shortcode, or use the block editor to set custom dimensions.
 
 = Does this plugin support official AMP? =
 Yes. When viewing content on an AMP-enabled request, the plugin automatically outputs native `<amp-lightbox>`, `<amp-youtube>`, and `<amp-vimeo>` markup without loading jQuery.
@@ -68,7 +56,6 @@ Yes. Add the **Video Lightbox for YouTube/Vimeo** block, then enter a public You
 
 The source code is available on <a href="https://github.com/milindmore22/youtubefancybox">GitHub</a>.
 
-
 == Screenshots ==
 
 1. Video Lightbox block in the editor.
@@ -78,6 +65,9 @@ The source code is available on <a href="https://github.com/milindmore22/youtube
 5. Video Lightbox popup playing a video on the frontend.
 
 == Changelog ==
+
+= 3.0.2 = 
+* Updated readme.txt to remove shortcode references and highlight block editor usage.
 
 = 3.0.1 =
 * Bump version to 3.0.1 for WordPress.org plugin repository.
